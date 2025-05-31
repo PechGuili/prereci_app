@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    
+    <!-- Viewport otimizado para PWA e iPhone -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- Meta tags PWA essenciais -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Prescrição Pech">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Cores do tema -->
+    <meta name="theme-color" content="#2c5aa0">
+    <meta name="msapplication-TileColor" content="#2c5aa0">
+    <meta name="msapplication-navbutton-color" content="#2c5aa0">
+    
+    <!-- Ícone personalizado com texto "Prescrição Pech" -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9IiMyYzVhYTAiLz4KPHN2ZyB4PSI0MCIgeT0iMzAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IndoaXRlIj4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAtMThjLTQuNDEgMC04IDMuNTktOCA4czMuNTkgOCA4IDggOC0zLjU5IDgtOC0zLjU5LTgtOC04em0tMS01aDJ2NmgtMnptMCA4aDJ2MmgtMnoiLz4KPHN2ZyB4PSI1NSIgeT0iMTAwIiB3aWR0aD0iNzAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCA3MCA0IiBmaWxsPSJ3aGl0ZSI+Cjx0ZXh0IHg9IjAiIHk9IjMiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzIiBmaWxsPSJ3aGl0ZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlByZXNjcmnDp8OjbzwvdGV4dD4KPHN2ZyB4PSI1NSIgeT0iMTE0IiB3aWR0aD0iNzAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCA3MCA0IiBmaWxsPSJ3aGl0ZSI+Cjx0ZXh0IHg9IjAiIHk9IjMiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzIiBmaWxsPSJ3aGl0ZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlBlY2ggQXBwPC90ZXh0Pgo8L3N2Zz4KPC9zdmc+">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNWFhMCIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlBQPC90ZXh0Pgo8L3N2Zz4=">
+    
+    <!-- Manifest atualizado com nome personalizado -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlByZXNjcmnDp8OjbyBQZWNoIEFwcCIsCiAgInNob3J0X25hbWUiOiAiUHJlc2NyacOnw6NvIFBlY2giLAogICJkZXNjcmlwdGlvbiI6ICJBcGxpY2F0aXZvIHByb2Zpc3Npb25hbCBwYXJhIHByZXNjcmnDp8O1ZXMgbcOpZGljYXMgZGlnaXRhaXMgLSBEci4gR3VpbGkgUGVjaCIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZjhmOWZhIiwKICAidGhlbWVfY29sb3IiOiAiIzJjNWFhMCIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0LXByaW1hcnkiLAogICJzY29wZSI6ICIvIiwKICAibGFuZyI6ICJwdC1CUiIsCiAgImNhdGVnb3JpZXMiOiBbIm1lZGljYWwiLCAiaGVhbHRoIiwgInByb2R1Y3Rpdml0eSJdLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGd3SWlCb1pXbG5hSFE5SWpFNE1DSWlJSFpwWlhkQ2IzZzlJakFnTUNBeE9EQWdNVGd3SWlCbWFXeHNQU0p1YjI1bElpQjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaVBnbzhjbVZqZENCM2FXUjBhRDBpTVRnd0lpQm9aV2xuYUhROUlqRTRNQ0lpSUhKNFBTSTBNQ0lpSUdacGJHdzlJaU15WXpWaFlUQWlMejRLUEhOMlp5QjRQU0kwTUNJZ2VUMGlNekFpSUhkcFpIUm9QU0l4TURBaUlHaGxhV2RvZEQwaU1UQXdJaUIyYVdWM1FtOTRQU0l3SURBZ01qUWdNalFpSUdacGJHdzlJbmRvYVhSbElqNEtQSEJoZEdnZ1pEMGlUVEV5SURRZ1F6WXVORGdnTkNBeUlEWXVORGdnTkNBeUlERXljekV1TkRnZ01UQWdNVEFnTVRBZ01UQXRNVEFnTVRBdE1UQXRNVEF0TkM0ME9TMWdNVEF0TVRCVE1UY3VPamtnTWlBeE1pQXllaUJtZUM0eE5DMHhPRW8rUEM5eVpuUXJQQzl6ZG1jK0NqeHpkbWNnZUQwaU5UVWlJSGs5SWpFd01DSWlJSGRwWkhSb1BTSTNNQ0lpSUdobGFXZG9kRDBpTVRRaUlIWnBaWGRDYjNnOUlqQWdNQ0EzTUNBMElpQm1hV3hzUFNKM2FHbDBaU0krQ2p4MFpYaDBJSGc5SWpBaUlIazlJak1pSUdadmJuUXRabUZ0YVd4NVBTSkJjbWxoYkNJaUlHWnZiblF0YzJsNlpUMGlNeUlpSUdacGJHdzlJbmRvYVhSbElpQm1iMjUwTFhkbGFXZG9kRDBpWW05c1pDSStVSEpsYzJOeWFYUjNjbUZqS0dGd2JIME4vZEdWNGRENEtQSE4yWnlCNFBTSTFOU0lpSUhrOUlqRXhOQ0lpSUhkcFpIUm9QU0kzTUNJaUlHaGxhV2RvZEQwaU1UUWlJSFpwWlhkQ2IzZzlJakFnTUNBM01DQTBJaUJtYVd4c1BTSjNhR2wwWlNJK0NqeDBaWGgwSUhnOUlqQWlJSGs5SWpNaUlHWnZiblF0Wm1GdGFXeDVQU0pCY21saGJDSWdabTl1ZEMxemFYcGxQU0l6SWlCbWFXeHNQU0ozYUdsMFpTSWdabTl1ZEMxM1pXbG5hSFE5SW1KdmJHUWlQbEJsWTJnZ1FYQndQQzkwWlhoMFBnbzhjeTkyWjNiZ1BDOXpkbWMrQ2p3dmMzWm5Qajw9IiwKICAgICAgInNpemVzIjogIjE4MHgxODAiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAibWFza2FibGUgYW55IgogICAgfQogIF0KfQ==">
+    
+    <!-- Meta tags para redes sociais -->
+    <meta property="og:title" content="Prescrição Pech App - Dr. Guili Pech">
+    <meta property="og:description" content="Aplicativo profissional para prescrições médicas digitais. Instale agora!">
+    <meta property="og:image" content="https://prescrica.drguili.com/icon-512x512.png">
+    <meta property="og:url" content="https://prescrica.drguili.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Prescrição Pech App">
+    
+    <!-- Para WhatsApp especificamente -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="📱 Prescrição Pech App - Instale agora!">
+    <meta name="twitter:description" content="Aplicativo médico profissional para seu celular">
+    
+    <title>Prescrição Pech App - Dr. Guili Pech</title>
+    
+    <style>
+        /* RESET E BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Otimizações de toque para iPhone */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        /* Permitir seleção de texto em inputs e textareas */
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+            /* Evitar zoom no iOS quando focado */
+            font-size: max(16px, 1rem);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            padding: 10mm;
+            color: #333;
+            margin: 0;
+            line-height: 1.4;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 60px;
+            
+            /* Otimizações iPhone */
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            
+            /* Suporte a safe area (iPhone X+) */
+            padding-left: max(10mm, env(safe-area-inset-left));
+            padding-right: max(10mm, env(safe-area-inset-right));
+            padding-top: max(10mm, env(safe-area-inset-top));
+            padding-bottom: max(60px, env(safe-area-inset-bottom));
+        }
+
+        /* Detectar se está rodando como PWA */
+        @media all and (display-mode: standalone) {
+            body {
+                /* Mais espaço quando rodando como app */
+                padding-top: max(20px, env(safe-area-inset-top));
+                background: #f0f2f5; /* Cor ligeiramente diferente para PWA */
+            }
+            
+            .pwa-only {
+                display: block !important;
+            }
+            
+            .web-only {
+                display: none !important;
+            }
+
+            /* Indicador visual de que está em modo app */
+            .page::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #2c5aa0, #667eea);
+                z-index: 1001;
+            }
+        }
+
+        /* Esconder elementos PWA quando no navegador */
+        .pwa-only {
+            display: none;
+        }
+
+        /* SPLASH SCREEN PERSONALIZADA */
+        .app-splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #2c5aa0 0%, #667eea 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .app-splash.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .splash-logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .splash-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .splash-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .splash-loading {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* PÁGINA */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        .page.empty {
+            display: none;
+        }
+
+        /* PWA INSTALL PROMPT MELHORADO */
+        .pwa-install-prompt {
+            position: fixed;
+            bottom: max(20px, env(safe-area-inset-bottom));
+            left: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2c5aa0 0%, #667eea 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(44, 90, 160, 0.4);
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: none;
+        }
+
+        .pwa-install-prompt.show {
+            display: block;
+            transform: translateY(0);
+        }
+
+        .pwa-prompt-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .pwa-prompt-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2c5aa0;
+            margin-right: 16px;
+        }
+
+        .pwa-prompt-text h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .pwa-prompt-text p {
+            margin: 4px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .pwa-install-steps {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .pwa-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .pwa-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .pwa-step-number {
+            background: white;
+            color: #2c5aa0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .pwa-install-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .pwa-install-btn, .pwa-dismiss-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .pwa-install-btn {
+            background: white;
+            color: #2c5aa0;
+        }
+
+        .pwa-install-btn:active {
+            transform: scale(0.98);
+            background: #f8f9fa;
+        }
+
+        .pwa-dismiss-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .pwa-dismiss-btn:active {
+            transform: scale(0.98);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* CABEÇALHO */
+        .header {
+            padding: 15px 25px;
+            border-bottom: 3px solid #2c5aa0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            flex-shrink: 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .doctor-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c5aa0;
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #2c5aa0;
+        }
+
+        .doctor-info {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .doctor-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 3px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .doctor-name:focus {
+            outline: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .specialty {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 2px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .specialty:focus {
+            outline: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .credentials {
+            font-size: 13px;
+            color: #888;
+            border: none;
+            background: transparent;
+            width: 100%;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .credentials:focus {
+            outline: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .prescription-title {
+            background: #2c5aa0 !important;
+            color: white !important;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .prescription-title input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .prescription-title input:focus {
+            outline: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+
+        /* CONTEÚDO */
+        .content {
+            padding: 20px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 60px;
+        }
+
+        /* INFORMAÇÕES DO PACIENTE */
+        .patient-info {
+            background: #f8f9fa;
+            border-left: 4px solid #2c5aa0;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .patient-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .patient-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .patient-field {
+            display: flex;
+            align-items: center;
+        }
+
+        .field-label {
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-right: 8px;
+            min-width: 70px;
+            font-size: 13px;
+        }
+
+        .field-value {
+            color: #555;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: max(16px, 13px);
+            padding: 2px 5px;
+            border-bottom: 1px dashed #ccc;
+            flex: 1;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .field-value:focus {
+            border-bottom-color: #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            outline: 1px solid #2c5aa0;
+            border-radius: 4px;
+        }
+
+        /* CONTAINER DE FÓRMULAS */
+        .formulas-container {
+            margin-top: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* SEÇÃO DE FÓRMULA */
+        .formula-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            overflow: visible;
+            position: relative;
+            flex: 0 0 auto;
+            min-height: auto;
+        }
+
+        /* BOTÃO REMOVER FÓRMULA */
+        .remove-formula-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .remove-formula-btn:hover,
+        .remove-formula-btn:active {
+            background: #c82333;
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        /* CABEÇALHO DA FÓRMULA */
+        .formula-header {
+            background: #2c5aa0 !important;
+            color: white !important;
+            padding: 8px 40px 8px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .formula-header input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: max(16px, 14px);
+            width: 100%;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .formula-header input:focus {
+            outline: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+
+        /* CONTEÚDO DA FÓRMULA */
+        .formula-content {
+            padding: 12px;
+        }
+
+        .medication-item {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 10px;
+            border-left: 3px solid #28a745;
+        }
+
+        .medication-name {
+            font-weight: bold;
+            color: #2c5aa0;
+            font-size: max(16px, 13px);
+            margin-bottom: 5px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .medication-name:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        .medication-composition {
+            font-size: max(16px, 11px);
+            color: #666;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            min-height: 60px;
+            resize: vertical;
+            overflow: visible;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .medication-composition:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        .medication-instructions {
+            background: #e8f4f8 !important;
+            padding: 6px;
+            border-radius: 3px;
+            font-size: max(16px, 11px);
+            color: #2c5aa0;
+        }
+
+        .posology {
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 3px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-size: max(16px, 11px);
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .posology:focus {
+            outline: 1px solid #dc3545;
+            background: rgba(220, 53, 69, 0.05);
+            border-radius: 4px;
+        }
+
+        .duration, .notes {
+            border: none;
+            background: transparent;
+            width: 100%;
+            margin-bottom: 2px;
+            font-size: max(16px, 11px);
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .duration:focus, .notes:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        /* BOTÃO ADICIONAR FÓRMULA */
+        .add-formula-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(40, 167, 69, 0.2);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 250px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .add-formula-btn:hover,
+        .add-formula-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        /* ASSINATURA */
+        .signature-section-highlight {
+            background: #f8f9fa;
+            border: 2px solid #2c5aa0;
+            border-radius: 8px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 200px;
+        }
+
+        .signature-line-highlight {
+            border-bottom: 2px solid #2c5aa0;
+            width: 300px;
+            height: 60px;
+            margin: 25px auto 20px;
+        }
+
+        .doctor-details-highlight {
+            margin-top: 15px;
+        }
+
+        .doctor-details-highlight input {
+            font-size: max(16px, 14px);
+            color: #2c5aa0;
+            border: none;
+            background: transparent;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 5px;
+            font-weight: bold;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .doctor-details-highlight input:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        .signature-date {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #2c5aa0;
+            font-style: italic;
+        }
+
+        /* CRONOGRAMA */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .schedule-table th {
+            background: #2c5aa0 !important;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .schedule-table textarea {
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: center;
+            resize: vertical;
+            font-size: max(16px, 11px);
+            min-height: 30px;
+            overflow: visible;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .schedule-table textarea:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        /* ADVERTÊNCIAS */
+        .warnings {
+            background: #fff3cd !important;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-size: max(16px, 1rem);
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .warning-title:focus {
+            outline: 1px solid #856404;
+            background: rgba(133, 100, 4, 0.05);
+            border-radius: 4px;
+        }
+
+        .warning-title::before {
+            content: "⚠️";
+            margin-right: 8px;
+        }
+
+        .warning-list {
+            font-size: max(16px, 12px);
+            color: #856404;
+            line-height: 1.4;
+            border: none;
+            background: transparent;
+            width: 100%;
+            min-height: 80px;
+            resize: vertical;
+            overflow: visible;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .warning-list:focus {
+            outline: 1px solid #856404;
+            background: rgba(133, 100, 4, 0.05);
+            border-radius: 4px;
+        }
+
+        /* RODAPÉ FIXO */
+        .contact-footer {
+            background: #2c5aa0 !important;
+            color: white !important;
+            padding: 12px 30px;
+            text-align: center;
+            font-size: 11px;
+            line-height: 1.5;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 100;
+            padding-left: max(30px, env(safe-area-inset-left));
+            padding-right: max(30px, env(safe-area-inset-right));
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+        }
+
+        /* BOTÃO IMPRIMIR/PDF */
+        .print-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            display: block;
+            width: auto;
+            min-width: 220px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .print-btn:hover,
+        .print-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .print-btn::before {
+            content: "📄 ";
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        /* ESTILOS DE IMPRESSÃO OTIMIZADOS PARA MOBILE */
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                font-size: 11px !important;
+            }
+            
+            @page {
+                size: A4;
+                margin: 12mm 10mm 15mm 10mm; /* Margens otimizadas */
+            }
+            
+            .page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                page-break-after: always;
+                min-height: auto !important;
+                height: auto !important;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                border-radius: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+                padding-bottom: 50px !important; /* Espaço para rodapé */
+            }
+
+            .page:last-child {
+                page-break-after: avoid;
+            }
+            
+            .page.empty {
+                display: none !important;
+            }
+            
+            /* Elementos que não devem aparecer na impressão */
+            .add-formula-btn, 
+            .print-btn,
+            .remove-formula-btn,
+            .pwa-install-prompt,
+            .app-splash {
+                display: none !important;
+            }
+            
+            .content {
+                padding: 12px 15px !important;
+                flex: 1;
+                margin-bottom: 30px !important;
+            }
+            
+            /* Otimizações de quebra de página */
+            .formula-section {
+                overflow: visible !important;
+                page-break-inside: avoid;
+                margin-bottom: 8px !important;
+                break-inside: avoid;
+            }
+            
+            .signature-section-highlight {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                padding: 20px 15px !important;
+                margin: 15px 0 !important;
+            }
+            
+            .warnings {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                margin: 8px 0 !important;
+                padding: 10px !important;
+            }
+            
+            .schedule-table {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                font-size: 10px !important;
+            }
+            
+            /* Ajustes de fonte para impressão */
+            .formula-header {
+                padding: 5px 10px !important;
+                font-size: 12px !important;
+                border-radius: 0 !important;
+            }
+            
+            .formula-content {
+                padding: 8px !important;
+            }
+            
+            .medication-item {
+                padding: 6px !important;
+            }
+            
+            .medication-composition {
+                min-height: auto !important;
+                height: auto !important;
+                font-size: 9px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .medication-instructions {
+                padding: 4px !important;
+                font-size: 9px !important;
+            }
+            
+            textarea, input {
+                height: auto !important;
+                overflow: visible !important;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                outline: none !important;
+            }
+            
+            /* Manter cores importantes na impressão */
+            .header {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-radius: 0 !important;
+                padding: 12px 15px !important;
+            }
+
+            .prescription-title {
+                background: #2c5aa0 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-radius: 0 !important;
+                padding: 8px 15px !important;
+                font-size: 13px !important;
+            }
+
+            .formula-header {
+                background: #2c5aa0 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-radius: 0 !important;
+            }
+
+            .medication-instructions {
+                background: #e8f4f8 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .schedule-table {
+                border-radius: 0 !important;
+            }
+
+            .schedule-table th {
+                background: #2c5aa0 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                padding: 5px !important;
+            }
+
+            .schedule-table td {
+                padding: 5px !important;
+            }
+
+            .warnings {
+                background: #fff3cd !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            /* Rodapé fixo na impressão */
+            .contact-footer {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                background: #2c5aa0 !important;
+                color: white !important;
+                padding: 6px 15px !important;
+                font-size: 9px !important;
+                text-align: center !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* Ajustes específicos para campos */
+            .patient-info {
+                padding: 8px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .patient-row {
+                margin-bottom: 4px !important;
+                gap: 10px !important;
+            }
+            
+            .field-label {
+                font-size: 10px !important;
+                min-width: 60px !important;
+            }
+            
+            .field-value {
+                font-size: 10px !important;
+                border-bottom: 1px dashed #999 !important;
+            }
+            
+            .doctor-name {
+                font-size: 18px !important;
+            }
+            
+            .specialty {
+                font-size: 13px !important;
+            }
+            
+            .credentials {
+                font-size: 11px !important;
+            }
+            
+            .signature-line-highlight {
+                height: 50px !important;
+                margin: 12px auto !important;
+                width: 250px !important;
+            }
+            
+            .warning-list {
+                font-size: 10px !important;
+                min-height: auto !important;
+                height: auto !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Evitar cortes indesejados */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+            }
+            
+            p, div {
+                orphans: 3;
+                widows: 3;
+            }
+        }
+
+        /* RESPONSIVIDADE MOBILE APRIMORADA */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                padding-bottom: max(80px, env(safe-area-inset-bottom));
+                padding-left: max(10px, env(safe-area-inset-left));
+                padding-right: max(10px, env(safe-area-inset-right));
+            }
+            
+            .page {
+                width: 100%;
+                margin-bottom: 15px;
+                border-radius: 12px;
+            }
+            
+            .patient-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .doctor-info {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .contact-footer {
+                font-size: 10px;
+                padding: 10px 15px;
+            }
+            
+            .signature-line-highlight {
+                width: 250px;
+            }
+            
+            .signature-section-highlight {
+                padding: 25px 15px;
+            }
+
+            .pwa-install-prompt {
+                left: 10px;
+                right: 10px;
+                bottom: max(10px, env(safe-area-inset-bottom));
+            }
+
+            /* Otimizações específicas para iPhone */
+            @supports (-webkit-touch-callout: none) {
+                .field-value, .medication-composition, .schedule-table textarea {
+                    font-size: 16px !important; /* Evita zoom no iOS */
+                }
+            }
+        }
+
+        /* Responsividade para telas muito pequenas */
+        @media (max-width: 375px) {
+            .doctor-logo {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .content {
+                padding: 15px 20px;
+            }
+            
+            .pwa-prompt-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+
+        /* Animações suaves */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-slide-up {
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Estados de carregamento */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Melhorias de acessibilidade */
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline-offset: 2px;
+        }
+
+        /* Feedback visual para instalação PWA */
+        .pwa-installing {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .pwa-installing .pwa-install-btn {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- SPLASH SCREEN PERSONALIZADA -->
+    <div class="app-splash" id="appSplash">
+        <div class="splash-logo">🩺</div>
+        <div class="splash-title">Prescrição Pech App</div>
+        <div class="splash-subtitle">Carregando aplicativo...</div>
+        <div class="splash-loading"></div>
+    </div>
+
+    <!-- PWA INSTALL PROMPT MELHORADO -->
+    <div class="pwa-install-prompt" id="pwaInstallPrompt">
+        <div class="pwa-prompt-header">
+            <div class="pwa-prompt-icon">📱</div>
+            <div class="pwa-prompt-text">
+                <h3>Instalar Aplicativo</h3>
+                <p>Adicione à sua tela inicial</p>
+            </div>
+        </div>
+        
+        <div class="pwa-install-steps">
+            <div class="pwa-step">
+                <div class="pwa-step-number">1</div>
+                <span>Toque no botão "Instalar" abaixo</span>
+            </div>
+            <div class="pwa-step">
+                <div class="pwa-step-number">2</div>
+                <span>Ou use Menu → "Adicionar à tela inicial"</span>
+            </div>
+            <div class="pwa-step">
+                <div class="pwa-step-number">3</div>
+                <span>Confirme a instalação</span>
+            </div>
+        </div>
+        
+        <div class="pwa-install-buttons">
+            <button class="pwa-install-btn" onclick="installPWA()">
+                📲 Instalar App
+            </button>
+            <button class="pwa-dismiss-btn" onclick="dismissPWA()">
+                Agora não
+            </button>
+        </div>
+    </div>
+
+    <!-- PÁGINA 1 - PRIMEIRA PRESCRIÇÃO -->
+    <div class="page" id="page1">
+        <!-- CABEÇALHO -->
+        <div class="header">
+            <div class="header-content">
+                <div class="doctor-logo">GP</div>
+                <div class="doctor-info">
+                    <input type="text" class="doctor-name" value="Dr. Guili Pech" placeholder="Nome do Médico">
+                    <input type="text" class="specialty" value="Cardiologia Clínica" placeholder="Especialidade">
+                    <input type="text" class="credentials" value="CRM 52.86323-8 | RQE Cardiologia: 25121" placeholder="Credenciais">
+                </div>
+            </div>
+            
+            <div class="prescription-title">
+                <input type="text" value="PRESCRIÇÃO MÉDICA - USO ORAL" placeholder="Título da Prescrição">
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- DADOS DO PACIENTE -->
+            <div class="patient-info">
+                <div class="patient-row">
+                    <div class="patient-field">
+                        <span class="field-label">Nome:</span>
+                        <input type="text" class="field-value" value="Maria Silva Santos" placeholder="Nome completo">
+                    </div>
+                    <div class="patient-field">
+                        <span class="field-label">Idade:</span>
+                        <input type="text" class="field-value" value="65 anos" placeholder="Idade">
+                    </div>
+                </div>
+                
+                <div class="patient-row">
+                    <div class="patient-field">
+                        <span class="field-label">CPF:</span>
+                        <input type="text" class="field-value" value="123.456.789-00" placeholder="CPF">
+                    </div>
+                    <div class="patient-field">
+                        <span class="field-label">Data:</span>
+                        <input type="text" class="field-value" value="" placeholder="Data da consulta">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTAINER DE FÓRMULAS -->
+            <div class="formulas-container">
+                <!-- FÓRMULA 1 -->
+                <div class="formula-section" data-formula-id="1">
+                    <button class="remove-formula-btn" onclick="removeFormula(1)" title="Remover esta fórmula">
+                        ❌
+                    </button>
+                    <div class="formula-header">
+                        <input type="text" value="1️⃣ FÓRMULA IMUNO-RESPIRATÓRIA" placeholder="Nome da fórmula">
+                    </div>
+                    <div class="formula-content">
+                        <div class="medication-item">
+                            <input type="text" class="medication-name" value="Manipular em comprimidos:" placeholder="Tipo de manipulação">
+                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Vitamina C ................................ 500mg
+• Zinco quelato ............................. 15mg
+• Vitamina D3 .............................. 2000UI
+• Própolis seco ............................. 200mg
+• Echinacea purpurea .................... 150mg
+• Excipiente qsp ........................... 1 comprimido</textarea>
+                            <div class="medication-instructions">
+                                <input type="text" class="posology" value="Posologia: 1 comprimido pela manhã" placeholder="Posologia">
+                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
+                                <input type="text" class="notes" value="Tomar com café da manhã" placeholder="Observações">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FÓRMULA 2 -->
+                <div class="formula-section" data-formula-id="2">
+                    <button class="remove-formula-btn" onclick="removeFormula(2)" title="Remover esta fórmula">
+                        ❌
+                    </button>
+                    <div class="formula-header">
+                        <input type="text" value="2️⃣ FÓRMULA SONO E RELAXAMENTO" placeholder="Nome da fórmula">
+                    </div>
+                    <div class="formula-content">
+                        <div class="medication-item">
+                            <input type="text" class="medication-name" value="Manipular em sachês:" placeholder="Tipo de manipulação">
+                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Melatonina ................................ 3mg
+• Magnésio bisglicinato .................. 200mg
+• L-teanina .................................. 100mg
+• Camomila extrato seco ................. 150mg
+• Maracujá extrato seco .................. 100mg
+• Excipiente qsp ........................... 1 sachê</textarea>
+                            <div class="medication-instructions">
+                                <input type="text" class="posology" value="Posologia: 1 sachê por noite" placeholder="Posologia">
+                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
+                                <input type="text" class="notes" value="Dissolver em 200ml de água, 1-2h antes de dormir" placeholder="Observações">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="add-formula-btn" onclick="addFormula()">
+                ➕ Adicionar Nova Fórmula
+            </button>
+
+            <!-- CRONOGRAMA DE MEDICAÇÃO -->
+            <div style="margin-top: 20px;">
+                <h3 style="color: #2c5aa0; margin-bottom: 10px;">📅 CRONOGRAMA DE MEDICAÇÃO</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>HORÁRIO</th>
+                            <th>MEDICAMENTO</th>
+                            <th>OBSERVAÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTableBody">
+                        <tr data-schedule-id="1">
+                            <td><textarea>8h00
+(manhã)</textarea></td>
+                            <td><textarea>• 1 dose Fórmula Imuno-respiratória</textarea></td>
+                            <td><textarea>Com café da manhã</textarea></td>
+                        </tr>
+                        <tr data-schedule-id="2">
+                            <td><textarea>21h00
+(noite)</textarea></td>
+                            <td><textarea>• 1 sachê Fórmula Sono e Relaxamento</textarea></td>
+                            <td><textarea>1-2h antes de dormir, dissolver em 200ml água</textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ADVERTÊNCIAS -->
+            <div class="warnings">
+                <input type="text" class="warning-title" value="ADVERTÊNCIAS E CUIDADOS ESPECIAIS" placeholder="Título das advertências">
+                <textarea class="warning-list" placeholder="Digite as advertências">• Manter medicamentos em local seco e protegido da luz
+• Não exceder as doses recomendadas
+• Em caso de reações adversas, suspender uso e comunicar ao médico
+• Medicamentos manipulados devem ser armazenados conforme orientação da farmácia
+• Retorno em 30 dias para avaliação e ajustes se necessário
+• Manter alimentação equilibrada e hidratação adequada durante tratamento</textarea>
+            </div>
+
+            <!-- ASSINATURA -->
+            <div class="signature-section-highlight">
+                <div class="signature-line-highlight"></div>
+                <div class="doctor-details-highlight">
+                    <input type="text" value="Dr. Guili Pech" placeholder="Nome do médico">
+                    <input type="text" value="Cardiologia Clínica" placeholder="Especialidade">
+                    <input type="text" value="CRM 52.86323-8 | RQE: 25121" placeholder="Registro profissional">
+                </div>
+                <div class="signature-date">
+                    Rio de Janeiro, 31 de maio de 2025
+                </div>
+            </div>
+
+            <button class="print-btn" onclick="generatePDF()">
+                GERAR PDF
+            </button>
+        </div>
+
+        <!-- RODAPÉ -->
+        <div class="contact-footer">
+            <div>📍 Condomínio Le Monde, Av. das Américas 3500, bloco 4, portaria 2, sala 210 | 📞 (21) 99341-8607</div>
+        </div>
+    </div>
+
+    <script>
+        // ======= VARIÁVEIS GLOBAIS =======
+        let formulaCount = 2;
+        let actionHistory = [];
+        let removedFormulas = [];
+        let deferredPrompt = null;
+        let isFirstVisit = true;
+
+        // ======= PWA FUNCTIONALITY APRIMORADA =======
+        
+        // Detecta se está rodando como PWA
+        function isPWA() {
+            return window.matchMedia('(display-mode: standalone)').matches ||
+                   window.navigator.standalone === true;
+        }
+
+        // Mostra splash screen personalizada
+        function showAppSplash() {
+            const splash = document.getElementById('appSplash');
+            splash.classList.add('show');
+            
+            setTimeout(() => {
+                splash.classList.remove('show');
+            }, 2000);
+        }
+
+        // Service Worker Registration com cache otimizado
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const swCode = `
+                        const CACHE_NAME = 'prescricao-pech-v2.0.0';
+                        const urlsToCache = [
+                            '/',
+                            '/index.html'
+                        ];
+
+                        self.addEventListener('install', (event) => {
+                            console.log('SW: Installing...');
+                            event.waitUntil(
+                                caches.open(CACHE_NAME)
+                                    .then((cache) => {
+                                        console.log('SW: Caching files');
+                                        return cache.addAll(urlsToCache);
+                                    })
+                            );
+                            self.skipWaiting();
+                        });
+
+                        self.addEventListener('activate', (event) => {
+                            console.log('SW: Activating...');
+                            event.waitUntil(
+                                caches.keys().then((cacheNames) => {
+                                    return Promise.all(
+                                        cacheNames.map((cacheName) => {
+                                            if (cacheName !== CACHE_NAME) {
+                                                console.log('SW: Deleting old cache:', cacheName);
+                                                return caches.delete(cacheName);
+                                            }
+                                        })
+                                    );
+                                }).then(() => {
+                                    console.log('SW: Claiming clients');
+                                    return self.clients.claim();
+                                })
+                            );
+                        });
+
+                        self.addEventListener('fetch', (event) => {
+                            if (event.request.method !== 'GET') return;
+                            
+                            event.respondWith(
+                                caches.match(event.request)
+                                    .then((response) => {
+                                        if (response) {
+                                            console.log('SW: Serving from cache:', event.request.url);
+                                            return response;
+                                        }
+                                        
+                                        console.log('SW: Fetching from network:', event.request.url);
+                                        return fetch(event.request)
+                                            .then((response) => {
+                                                if (!response || response.status !== 200 || response.type !== 'basic') {
+                                                    return response;
+                                                }
+                                                
+                                                const responseToCache = response.clone();
+                                                caches.open(CACHE_NAME)
+                                                    .then((cache) => {
+                                                        cache.put(event.request, responseToCache);
+                                                    });
+                                                return response;
+                                            })
+                                            .catch(() => {
+                                                // Offline fallback melhorado
+                                                if (event.request.headers.get('accept').includes('text/html')) {
+                                                    return new Response(
+                                                        \`<!DOCTYPE html>
+                                                        <html>
+                                                        <head>
+                                                            <title>Prescrição Pech - Offline</title>
+                                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                                            <style>
+                                                                body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+                                                                       text-align: center; padding: 50px 20px; background: #f8f9fa; }
+                                                                .offline-container { max-width: 400px; margin: 0 auto; }
+                                                                .offline-icon { font-size: 64px; margin-bottom: 20px; }
+                                                                h1 { color: #2c5aa0; margin-bottom: 16px; }
+                                                                p { color: #666; line-height: 1.5; }
+                                                            </style>
+                                                        </head>
+                                                        <body>
+                                                            <div class="offline-container">
+                                                                <div class="offline-icon">📱</div>
+                                                                <h1>Prescrição Pech App</h1>
+                                                                <p>Você está offline, mas o aplicativo ainda funciona! 
+                                                                   Suas prescrições são salvas localmente.</p>
+                                                            </div>
+                                                        </body>
+                                                        </html>\`,
+                                                        { 
+                                                            headers: { 
+                                                                'Content-Type': 'text/html',
+                                                                'Cache-Control': 'no-cache'
+                                                            } 
+                                                        }
+                                                    );
+                                                }
+                                            });
+                                    })
+                            );
+                        });
+                    `;
+                    
+                    const blob = new Blob([swCode], { type: 'application/javascript' });
+                    const swUrl = URL.createObjectURL(blob);
+                    
+                    const registration = await navigator.serviceWorker.register(swUrl);
+                    console.log('SW registrado com sucesso:', registration);
+                } catch (error) {
+                    console.log('SW falhou ao registrar:', error);
+                }
+            });
+        }
+
+        // PWA Install Prompt melhorado
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('PWA install prompt triggered');
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Mostra o prompt após o usuário interagir com a página
+            setTimeout(() => {
+                if (isFirstVisit && !isPWA()) {
+                    showPWAInstallPrompt();
+                    isFirstVisit = false;
+                }
+            }, 5000);
+        });
+
+        // Detecta quando o app é instalado
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA foi instalado com sucesso!');
+            deferredPrompt = null;
+            hidePWAInstallPrompt();
+            localStorage.setItem('pwa-installed', 'true');
+            
+            // Mostra splash screen de sucesso
+            showSuccessMessage();
+        });
+
+        function showPWAInstallPrompt() {
+            if (localStorage.getItem('pwa-installed') === 'true' || 
+                localStorage.getItem('pwa-dismissed') === 'true') {
+                return;
+            }
+            
+            const prompt = document.getElementById('pwaInstallPrompt');
+            if (prompt && deferredPrompt) {
+                prompt.classList.add('show');
+            }
+        }
+
+        function hidePWAInstallPrompt() {
+            const prompt = document.getElementById('pwaInstallPrompt');
+            if (prompt) {
+                prompt.classList.remove('show');
+            }
+        }
+
+        function installPWA() {
+            if (deferredPrompt) {
+                // Adiciona feedback visual
+                const prompt = document.getElementById('pwaInstallPrompt');
+                prompt.classList.add('pwa-installing');
+                
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((result) => {
+                    console.log('User choice:', result);
+                    
+                    if (result.outcome === 'accepted') {
+                        console.log('Usuário aceitou a instalação');
+                        localStorage.setItem('pwa-installed', 'true');
+                        showSuccessMessage();
+                    } else {
+                        console.log('Usuário rejeitou a instalação');
+                        prompt.classList.remove('pwa-installing');
+                    }
+                    
+                    deferredPrompt = null;
+                    hidePWAInstallPrompt();
+                });
+            } else {
+                // Fallback para dispositivos que não suportam auto-install
+                showManualInstallInstructions();
+            }
+        }
+
+        function dismissPWA() {
+            hidePWAInstallPrompt();
+            deferredPrompt = null;
+            
+            // Salva que foi rejeitado (válido por 7 dias)
+            const dismissedUntil = Date.now() + (7 * 24 * 60 * 60 * 1000);
+            localStorage.setItem('pwa-dismissed', 'true');
+            localStorage.setItem('pwa-dismissed-until', dismissedUntil.toString());
+        }
+
+        function showSuccessMessage() {
+            const successHTML = \`
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+                           background: rgba(0,0,0,0.8); display: flex; align-items: center; 
+                           justify-content: center; z-index: 10000; color: white; text-align: center;">
+                    <div style="background: linear-gradient(135deg, #28a745, #20c997); 
+                               padding: 40px; border-radius: 20px; max-width: 350px;">
+                        <div style="font-size: 64px; margin-bottom: 20px;">✅</div>
+                        <h2 style="margin: 0 0 16px 0;">Instalado com Sucesso!</h2>
+                        <p style="margin: 0; opacity: 0.9;">
+                            O ícone "Prescrição Pech App" foi adicionado à sua tela inicial.
+                        </p>
+                    </div>
+                </div>
+            \`;
+            
+            document.body.insertAdjacentHTML('beforeend', successHTML);
+            
+            setTimeout(() => {
+                const successEl = document.body.lastElementChild;
+                successEl.style.opacity = '0';
+                successEl.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => successEl.remove(), 300);
+            }, 3000);
+        }
+
+        function showManualInstallInstructions() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const instructions = isIOS ? 
+                'No Safari: toque em Compartilhar → Adicionar à Tela de Início' :
+                'No Chrome: toque no menu (⋮) → Adicionar à tela inicial';
+                
+            alert(\`📱 Para instalar como aplicativo:\n\n\${instructions}\`);
+        }
+
+        // Verifica se o dismiss expirou
+        function checkDismissStatus() {
+            const dismissedUntil = localStorage.getItem('pwa-dismissed-until');
+            if (dismissedUntil && Date.now() > parseInt(dismissedUntil)) {
+                localStorage.removeItem('pwa-dismissed');
+                localStorage.removeItem('pwa-dismissed-until');
+            }
+        }
+
+        // ======= MAPEAMENTO DE FÓRMULAS PARA CRONOGRAMA =======
+        const formulaSchedule = {
+            1: { time: '8h00\\n(manhã)', medication: '• 1 dose Fórmula Imuno-respiratória', observation: 'Com café da manhã' },
+            2: { time: '21h00\\n(noite)', medication: '• 1 sachê Fórmula Sono e Relaxamento', observation: '1-2h antes de dormir, dissolver em 200ml água' }
+        };
+
+        // ======= FUNÇÕES DE TEXTAREA AUTO-RESIZE =======
+        function autoResizeTextarea(textarea) {
+            textarea.style.height = 'auto';
+            const minHeight = 30;
+            const newHeight = Math.max(minHeight, textarea.scrollHeight);
+            textarea.style.height = newHeight + 'px';
+        }
+
+        function addTextareaListeners() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResizeTextarea(textarea);
+                
+                textarea.addEventListener('input', function() {
+                    autoResizeTextarea(this);
+                });
+                
+                textarea.addEventListener('focus', function() {
+                    autoResizeTextarea(this);
+                });
+                
+                textarea.addEventListener('paste', function() {
+                    setTimeout(() => autoResizeTextarea(this), 10);
+                });
+            });
+        }
+
+        // ======= INICIALIZAÇÃO =======
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🩺 Prescrição Pech App carregada');
+            console.log('PWA Mode:', isPWA());
+            
+            // Mostra splash screen se for primeira visita
+            if (isPWA() || isFirstVisit) {
+                showAppSplash();
+            }
+            
+            // Inicializar funcionalidades
+            syncDoctorData();
+            updateSchedule();
+            checkEmptyPages();
+            addTextareaListeners();
+            checkDismissStatus();
+            updateCurrentDate();
+            
+            // Configurações específicas para PWA
+            if (isPWA()) {
+                document.body.classList.add('pwa-mode');
+                console.log('Rodando como PWA instalado');
+            }
+        });
+
+        // ======= ATUALIZAÇÃO DE DATA =======
+        function updateCurrentDate() {
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('pt-BR');
+            
+            // Atualizar campos de data vazios
+            const dateFields = document.querySelectorAll('.field-value');
+            dateFields.forEach(field => {
+                if (field.placeholder === 'Data da consulta' && field.value === '') {
+                    field.value = formattedDate;
+                }
+            });
+            
+            // Atualizar data da assinatura
+            const signatureDate = document.querySelector('.signature-date');
+            if (signatureDate) {
+                const cityName = 'Rio de Janeiro';
+                const months = [
+                    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+                    'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+                ];
+                
+                const day = today.getDate();
+                const month = months[today.getMonth()];
+                const year = today.getFullYear();
+                
+                signatureDate.textContent = \`\${cityName}, \${day} de \${month} de \${year}\`;
+            }
+        }
+
+        // ======= GERENCIAMENTO DE FÓRMULAS =======
+        function addFormula() {
+            formulaCount++;
+            
+            const action = {
+                type: 'add',
+                formulaId: formulaCount,
+                timestamp: Date.now()
+            };
+            
+            const newFormulaHTML = createFormulaHTML(formulaCount);
+            
+            const currentContainer = document.querySelector('.formulas-container');
+            currentContainer.insertAdjacentHTML('beforeend', newFormulaHTML);
+            
+            addScheduleRow(formulaCount);
+            actionHistory.push(action);
+            syncDoctorData();
+            checkEmptyPages();
+            addTextareaListeners();
+            
+            // Animar entrada da nova fórmula
+            const newFormula = document.querySelector(\`[data-formula-id="\${formulaCount}"]\`);
+            if (newFormula) {
+                newFormula.classList.add('animate-slide-up');
+            }
+        }
+
+        function removeFormula(formulaId) {
+            const formula = document.querySelector(\`[data-formula-id="\${formulaId}"]\`);
+            if (!formula) return;
+            
+            if (!confirm('Tem certeza que deseja remover esta fórmula?')) {
+                return;
+            }
+            
+            const formulaData = {
+                id: formulaId,
+                html: formula.outerHTML,
+                scheduleData: formulaSchedule[formulaId] || null
+            };
+            
+            // Animar saída
+            formula.style.transition = 'all 0.3s ease';
+            formula.style.transform = 'translateX(-100%)';
+            formula.style.opacity = '0';
+            
+            setTimeout(() => {
+                formula.remove();
+                removeScheduleRow(formulaId);
+                
+                const action = {
+                    type: 'remove',
+                    formulaId: formulaId,
+                    formulaData: formulaData,
+                    timestamp: Date.now()
+                };
+                
+                actionHistory.push(action);
+                removedFormulas.push(formulaData);
+                checkEmptyPages();
+            }, 300);
+        }
+
+        function createFormulaHTML(number) {
+            return \`
+                <div class="formula-section" data-formula-id="\${number}">
+                    <button class="remove-formula-btn" onclick="removeFormula(\${number})" title="Remover esta fórmula">
+                        ❌
+                    </button>
+                    <div class="formula-header">
+                        <input type="text" value="\${number}️⃣ NOVA FÓRMULA" placeholder="Nome da fórmula">
+                    </div>
+                    <div class="formula-content">
+                        <div class="medication-item">
+                            <input type="text" class="medication-name" value="Manipular em comprimidos:" placeholder="Tipo de manipulação">
+                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Ativo principal .......................... 250mg
+• Ativo secundário ................... 100mg
+• Excipiente qsp ....................... 1 comprimido</textarea>
+                            <div class="medication-instructions">
+                                <input type="text" class="posology" value="Posologia: 1 dose por dia conforme orientação médica" placeholder="Posologia">
+                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
+                                <input type="text" class="notes" value="Tomar preferencialmente com refeições" placeholder="Observações">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            \`;
+        }
+
+        // ======= GERENCIAMENTO DE CRONOGRAMA =======
+        function updateSchedule() {
+            const scheduleTableBody = document.getElementById('scheduleTableBody');
+            scheduleTableBody.innerHTML = '';
+            
+            const sortedSchedule = Object.entries(formulaSchedule)
+                .filter(([id]) => document.querySelector(\`[data-formula-id="\${id}"]\`))
+                .sort((a, b) => {
+                    const timeA = parseInt(a[1].time.match(/\\d+/)[0]);
+                    const timeB = parseInt(b[1].time.match(/\\d+/)[0]);
+                    return timeA - timeB;
+                });
+            
+            sortedSchedule.forEach(([id, data]) => {
+                const rowHTML = \`
+                    <tr data-schedule-id="\${id}">
+                        <td><textarea>\${data.time}</textarea></td>
+                        <td><textarea>\${data.medication}</textarea></td>
+                        <td><textarea>\${data.observation}</textarea></td>
+                    </tr>
+                \`;
+                scheduleTableBody.insertAdjacentHTML('beforeend', rowHTML);
+            });
+            
+            addTextareaListeners();
+        }
+
+        function addScheduleRow(formulaNumber) {
+            const timeSlots = ['9h00', '10h00', '11h00', '14h00', '15h00', '16h00', '17h00', '18h00', '20h00', '22h00'];
+            const timeIndex = formulaNumber - 3;
+            
+            formulaSchedule[formulaNumber] = {
+                time: \`\${timeSlots[timeIndex] || (8 + timeIndex) + 'h00'}\\n(horário)\`,
+                medication: \`• 1 dose \${formulaNumber}ª Fórmula\`,
+                observation: 'Conforme orientação médica'
+            };
+            
+            updateSchedule();
+        }
+
+        function removeScheduleRow(formulaId) {
+            delete formulaSchedule[formulaId];
+            updateSchedule();
+        }
+
+        // ======= OUTRAS FUNÇÕES =======
+        function checkEmptyPages() {
+            const pages = document.querySelectorAll('.page');
+            
+            pages.forEach(page => {
+                const hasFormulas = page.querySelector('.formula-section');
+                const hasSchedule = page.querySelector('.schedule-table');
+                const hasSignature = page.querySelector('.signature-section-highlight');
+                const hasWarnings = page.querySelector('.warnings');
+                
+                if (!hasFormulas && !hasSchedule && !hasSignature && !hasWarnings) {
+                    page.classList.add('empty');
+                } else {
+                    page.classList.remove('empty');
+                }
+            });
+        }
+
+        function syncDoctorData() {
+            const doctorInputs = document.querySelectorAll('.doctor-name, .specialty, .credentials');
+            
+            doctorInputs.forEach((input) => {
+                input.addEventListener('input', function() {
+                    const className = this.className;
+                    const allSimilar = document.querySelectorAll('.' + className);
+                    
+                    allSimilar.forEach(similarInput => {
+                        if (similarInput !== this) {
+                            similarInput.value = this.value;
+                        }
+                    });
+                });
+            });
+        }
+
+        // ======= FUNÇÃO DE IMPRESSÃO OTIMIZADA =======
+        function generatePDF() {
+            console.log('Gerando PDF...');
+            
+            // Prepara para impressão
+            checkEmptyPages();
+            
+            // Ajusta todos os textareas
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResizeTextarea(textarea);
+            });
+            
+            // Esconde elementos não necessários
+            hidePWAInstallPrompt();
+            
+            // Feedback visual
+            const printBtn = document.querySelector('.print-btn');
+            const originalText = printBtn.innerHTML;
+            printBtn.innerHTML = '⏳ Gerando PDF...';
+            printBtn.disabled = true;
+            
+            setTimeout(() => {
+                window.print();
+                
+                // Restaura botão após um tempo
+                setTimeout(() => {
+                    printBtn.innerHTML = originalText;
+                    printBtn.disabled = false;
+                }, 2000);
+            }, 500);
+        }
+
+        // ======= AUTO-SAVE =======
+        function saveState() {
+            const state = {
+                formulaCount: formulaCount,
+                actionHistory: actionHistory,
+                removedFormulas: removedFormulas,
+                formulaSchedule: formulaSchedule,
+                timestamp: Date.now()
+            };
+            
+            try {
+                localStorage.setItem('prescriptionState', JSON.stringify(state));
+                console.log('Estado salvo automaticamente');
+            } catch (error) {
+                console.warn('Não foi possível salvar o estado:', error);
+            }
+        }
+
+        // Auto-save otimizado para mobile
+        let saveTimeout;
+        document.addEventListener('input', function(e) {
+            if (e.target.matches('input, textarea')) {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(saveState, 2000);
+            }
+        });
+
+        // ======= EVENT LISTENERS =======
+        window.addEventListener('beforeprint', function() {
+            console.log('Preparando para impressão...');
+            checkEmptyPages();
+            
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResizeTextarea(textarea);
+            });
+            
+            hidePWAInstallPrompt();
+        });
+
+        window.addEventListener('orientationchange', function() {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            viewport.setAttribute('content', 
+                'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
+            );
+        });
+
+        window.addEventListener('beforeunload', function(e) {
+            saveState();
+        });
+
+        // Melhorar performance em dispositivos móveis
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            let saveTimeout;
+            const originalSaveState = saveState;
+            
+            saveState = function() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(originalSaveState, 3000);
+            };
+        }
+
+        // ======= LOGS DE DEBUG =======
+        console.log('=== Prescrição Pech App ===');
+        console.log('Versão: 2.0.0');
+        console.log('PWA Suporte:', 'serviceWorker' in navigator);
+        console.log('Modo PWA:', isPWA());
+        console.log('User Agent:', navigator.userAgent);
+        console.log('Viewport:', window.innerWidth + 'x' + window.innerHeight);
+        console.log('==============================');
+    </script>
+</body>
+</html>
