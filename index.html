@@ -1,1266 +1,251 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    
-    <!-- Viewport otimizado para PWA e iPhone -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
-    <!-- Meta tags PWA essenciais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Prescrição Pech">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="mobile-web-app-capable" content="yes">
-    
-    <!-- Cores do tema -->
     <meta name="theme-color" content="#2c5aa0">
-    <meta name="msapplication-TileColor" content="#2c5aa0">
-    <meta name="msapplication-navbutton-color" content="#2c5aa0">
     
-    <!-- Ícone personalizado com texto "Prescrição Pech" -->
-    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9IiMyYzVhYTAiLz4KPHN2ZyB4PSI0MCIgeT0iMzAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IndoaXRlIj4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAtMThjLTQuNDEgMC04IDMuNTktOCA4czMuNTkgOCA4IDggOC0zLjU5IDgtOC0zLjU5LTgtOC04em0tMS01aDJ2NmgtMnptMCA4aDJ2MmgtMnoiLz4KPHN2ZyB4PSI1NSIgeT0iMTAwIiB3aWR0aD0iNzAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCA3MCA0IiBmaWxsPSJ3aGl0ZSI+Cjx0ZXh0IHg9IjAiIHk9IjMiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzIiBmaWxsPSJ3aGl0ZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlByZXNjcmnDp8OjbzwvdGV4dD4KPHN2ZyB4PSI1NSIgeT0iMTE0IiB3aWR0aD0iNzAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCA3MCA0IiBmaWxsPSJ3aGl0ZSI+Cjx0ZXh0IHg9IjAiIHk9IjMiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzIiBmaWxsPSJ3aGl0ZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlBlY2ggQXBwPC90ZXh0Pgo8L3N2Zz4KPC9zdmc+">
+    <title>Prescrição Pech</title>
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNWFhMCIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlBQPC90ZXh0Pgo8L3N2Zz4=">
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlByZXNjcmnDp8OjbyBQZWNoIiwKICAic2hvcnRfbmFtZSI6ICJQcmVzY3Jpw6fDo28iLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2ZmZmZmZiIsCiAgInRoZW1lX2NvbG9yIjogIiMyYzVhYTAiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBSUFBQUFDQUNBWUFBQUREUFc2MUFBQUFDWEJJV1hNQUFBc1RBQUFMRXdFQW1wd1lBQUFBQVhOU1IwSUFyczRjNlFBQUFBUm5RVTFCQUFDeGp3djhZUVVBQUFCU1NVUkJWSGdCN2RxeENVQXhFSVMvOE10dVFXUkplSVJFbDBBNEVBZ0VBZ0VJRUdERHdBQVE0QkRnQVljeE1JQUFBQUFTVVZPUNS1DWUlVLAogICAgICAic2l6ZXMiOiAiMTI4eDEyOCIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFRQUFBQUVBQ0FZQUFBQlI5czR1QUFBQUNYQklXWE1BQUFzVEFBQUxFd0VBbXB3WUFBQUFBWE5TUjBJQXJzNGM2UUFBQUFSblFVMUJBQUN4and2OFlRVUFBQUJqU1VSQlZIZ0I3ZHFCQ1VBeEVJUy84TXR1UVdSSmVJVUVsMEE0RUFnRUFnRUlFR0REd0FBUTRCRGdBWWN4TUlBQUFBQVNVVk9SazVDWUlJPSIsCiAgICAgICJzaXplcyI6ICIyNTZ4MjU2IiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfQogIF0KfQ==">
     
-    <!-- Manifest atualizado com nome personalizado -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlByZXNjcmnDp8OjbyBQZWNoIEFwcCIsCiAgInNob3J0X25hbWUiOiAiUHJlc2NyacOnw6NvIFBlY2giLAogICJkZXNjcmlwdGlvbiI6ICJBcGxpY2F0aXZvIHByb2Zpc3Npb25hbCBwYXJhIHByZXNjcmnDp8O1ZXMgbcOpZGljYXMgZGlnaXRhaXMgLSBEci4gR3VpbGkgUGVjaCIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZjhmOWZhIiwKICAidGhlbWVfY29sb3IiOiAiIzJjNWFhMCIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0LXByaW1hcnkiLAogICJzY29wZSI6ICIvIiwKICAibGFuZyI6ICJwdC1CUiIsCiAgImNhdGVnb3JpZXMiOiBbIm1lZGljYWwiLCAiaGVhbHRoIiwgInByb2R1Y3Rpdml0eSJdLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGd3SWlCb1pXbG5hSFE5SWpFNE1DSWlJSFpwWlhkQ2IzZzlJakFnTUNBeE9EQWdNVGd3SWlCbWFXeHNQU0p1YjI1bElpQjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaVBnbzhjbVZqZENCM2FXUjBhRDBpTVRnd0lpQm9aV2xuYUhROUlqRTRNQ0lpSUhKNFBTSTBNQ0lpSUdacGJHdzlJaU15WXpWaFlUQWlMejRLUEhOMlp5QjRQU0kwTUNJZ2VUMGlNekFpSUhkcFpIUm9QU0l4TURBaUlHaGxhV2RvZEQwaU1UQXdJaUIyYVdWM1FtOTRQU0l3SURBZ01qUWdNalFpSUdacGJHdzlJbmRvYVhSbElqNEtQSEJoZEdnZ1pEMGlUVEV5SURRZ1F6WXVORGdnTkNBeUlEWXVORGdnTkNBeUlERXljekV1TkRnZ01UQWdNVEFnTVRBZ01UQXRNVEFnTVRBdE1UQXRNVEF0TkM0ME9TMWdNVEF0TVRCVE1UY3VPamtnTWlBeE1pQXllaUJtZUM2eE5DMHhPRW8rUEM5eVpuUXJQQzl6ZG1jK0NqeHpkbWNnZUQwaU5UVWlJSGs5SWpFd01DSWlJSGRwWkhSb1BTSTNNQ0lpSUdobGFXZG9kRDBpTVRRaUlIWnBaWGRDYjNnOUlqQWdNQ0EzTUNBMElpQm1hV3hzUFNKM2FHbDBaU0krQ2p4MFpYaDBJSGc5SWpBaUlIazlJak1pSUdadmJuUXRabUZ0YVd4NVBTSkJjbWxoYkNJaUlHWnZiblF0YzJsNlpUMGlNeUlpSUdacGJHdzlJbmRvYVhSbElpQm1iMjUwTFhkbGFXZG9kRDBpWW05c1pDSStVSEpsYzJOeWFYUjNjbUZqS0dGd2JINE4vZEdWNGRENEtQSE4yWnlCNFBTSTFOU0lpSUhrOUlqRXhOQ0lpSUhkcFpIUm9QU0kzTUNJaUlHaGxhV2RvZEQwaU1UUWlJSFpwWlhkQ2IzZzlJakFnTUNBM01DQTBJaUJtYVd4c1BTSjNhR2wwWlNJK0NqeDBaWGgwSUhnOUlqQWlJSGs5SWpNaUlHWnZiblF0Wm1GdGFXeDVQU0pCY21saGJDSWdabTl1ZEMxemFYcGxQU0l6SWlCbWFXeHNQU0ozYUdsMFpTSWdabTl1ZEMxM1pXbG5hSFE5SW1KdmJHUWlQbEJsWTJnZ1FYQndQQzkwWlhoMFBnbzhjeTkyWjNiZ1BDOXpkbWMrQ2p3dmMzWm5Qajw9IiwKICAgICAgInNpemVzIjogIjE4MHgxODAiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAibWFza2FibGUgYW55IgogICAgfQogIF0KfQ==">
-    
-    <!-- Meta tags para redes sociais -->
-    <meta property="og:title" content="Prescrição Pech App - Dr. Guili Pech">
-    <meta property="og:description" content="Aplicativo profissional para prescrições médicas digitais. Instale agora!">
-    <meta property="og:image" content="https://appprescricao.cmubusiness.com/icon-512x512.png">
-    <meta property="og:url" content="https://appprescricao.cmubusiness.com">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Prescrição Pech App">
-    
-    <!-- Para WhatsApp especificamente -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="📱 Prescrição Pech App - Instale agora!">
-    <meta name="twitter:description" content="Aplicativo médico profissional para seu celular">
-    
-    <title>Prescrição Pech App - Dr. Guili Pech</title>
+    <!-- Ícone para iOS -->
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABSSURBVHgB7dqxCUAxEIS/8MtuQWRJeIREl0A4EAgEAgEIEGDDwAAQ4BDgAYcxMIAAAAAASUVORk5CYII=">
     
     <style>
-        /* RESET E BASE */
+        /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Otimizações de toque para iPhone */
             -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
         }
 
-        /* Permitir seleção de texto em inputs e textareas */
-        input, textarea {
-            -webkit-user-select: text;
-            user-select: text;
-            /* Evitar zoom no iOS quando focado */
-            font-size: max(16px, 1rem);
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f8f9fa;
-            padding: 10mm;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f5f5f5;
             margin: 0;
-            line-height: 1.4;
+            padding: 20px;
             min-height: 100vh;
-            position: relative;
-            padding-bottom: 80px;
-            
-            /* Otimizações iPhone */
-            -webkit-text-size-adjust: 100%;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            
-            /* Suporte a safe area (iPhone X+) */
-            padding-left: max(10mm, env(safe-area-inset-left));
-            padding-right: max(10mm, env(safe-area-inset-right));
-            padding-top: max(10mm, env(safe-area-inset-top));
-            padding-bottom: max(80px, env(safe-area-inset-bottom));
         }
 
-        /* Detectar se está rodando como PWA */
-        @media all and (display-mode: standalone) {
-            body {
-                /* Mais espaço quando rodando como app */
-                padding-top: max(20px, env(safe-area-inset-top));
-                background: #f0f2f5; /* Cor ligeiramente diferente para PWA */
-            }
-            
-            .pwa-only {
-                display: block !important;
-            }
-            
-            .web-only {
-                display: none !important;
-            }
-
-            /* Indicador visual de que está em modo app */
-            .page::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background: linear-gradient(90deg, #2c5aa0, #667eea);
-                z-index: 1001;
-            }
+        /* Prevenir zoom em inputs no iOS */
+        input, textarea, select {
+            font-size: 16px !important;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
-        /* Esconder elementos PWA quando no navegador */
-        .pwa-only {
-            display: none;
+        input[type="text"], textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: inherit;
         }
 
-        /* SPLASH SCREEN PERSONALIZADA */
-        .app-splash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #2c5aa0 0%, #667eea 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            color: white;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+        textarea {
+            resize: vertical;
+            min-height: 60px;
         }
 
-        .app-splash.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .splash-logo {
-            width: 120px;
-            height: 120px;
+        /* Container Principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             background: white;
-            border-radius: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: #2c5aa0;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .splash-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .splash-subtitle {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 40px;
-        }
-
-        .splash-loading {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top: 3px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* PÁGINA */
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto 20px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            position: relative;
-            page-break-after: always;
-            display: flex;
-            flex-direction: column;
-            padding-bottom: 80px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-radius: 8px;
             overflow: hidden;
+            margin-bottom: 100px; /* Espaço para o rodapé fixo */
         }
 
-        .page:last-child {
-            page-break-after: avoid;
-        }
-
-        .page.empty {
-            display: none;
-        }
-
-        /* PWA INSTALL PROMPT MELHORADO */
-        .pwa-install-prompt {
-            position: fixed;
-            bottom: max(20px, env(safe-area-inset-bottom));
-            left: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #2c5aa0 0%, #667eea 100%);
+        /* Cabeçalho */
+        .header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e4080 100%);
             color: white;
             padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(44, 90, 160, 0.4);
-            z-index: 1000;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: none;
+            text-align: center;
         }
 
-        .pwa-install-prompt.show {
-            display: block;
-            transform: translateY(0);
-        }
-
-        .pwa-prompt-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .pwa-prompt-icon {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .header h1 {
             font-size: 24px;
-            color: #2c5aa0;
-            margin-right: 16px;
+            margin-bottom: 5px;
         }
 
-        .pwa-prompt-text h3 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .pwa-prompt-text p {
-            margin: 4px 0 0 0;
+        .header p {
             font-size: 14px;
             opacity: 0.9;
         }
 
-        .pwa-install-steps {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 16px;
-            margin: 16px 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .pwa-step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 14px;
-        }
-
-        .pwa-step:last-child {
-            margin-bottom: 0;
-        }
-
-        .pwa-step-number {
-            background: white;
-            color: #2c5aa0;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-
-        .pwa-install-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .pwa-install-btn, .pwa-dismiss-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .pwa-install-btn {
-            background: white;
-            color: #2c5aa0;
-        }
-
-        .pwa-install-btn:active {
-            transform: scale(0.98);
-            background: #f8f9fa;
-        }
-
-        .pwa-dismiss-btn {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.5);
-        }
-
-        .pwa-dismiss-btn:active {
-            transform: scale(0.98);
-            background: rgba(255,255,255,0.1);
-        }
-
-        /* CABEÇALHO */
-        .header {
-            padding: 15px 25px;
-            border-bottom: 3px solid #2c5aa0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            flex-shrink: 0;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .doctor-logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2c5aa0;
-            background: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #2c5aa0;
-        }
-
+        /* Informações do Médico */
         .doctor-info {
-            flex: 1;
-            margin-left: 20px;
-        }
-
-        .doctor-name {
-            font-size: 22px;
-            font-weight: bold;
-            color: #2c5aa0;
-            margin-bottom: 3px;
-            border: none;
-            background: transparent;
-            width: 100%;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .doctor-name:focus {
-            outline: 2px solid #667eea;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 4px;
-        }
-
-        .specialty {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 2px;
-            border: none;
-            background: transparent;
-            width: 100%;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .specialty:focus {
-            outline: 2px solid #667eea;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 4px;
-        }
-
-        .credentials {
-            font-size: 13px;
-            color: #888;
-            border: none;
-            background: transparent;
-            width: 100%;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .credentials:focus {
-            outline: 2px solid #667eea;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 4px;
-        }
-
-        .prescription-title {
-            background: #2c5aa0 !important;
-            color: white !important;
-            padding: 10px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .prescription-title input {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            width: 100%;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .prescription-title input:focus {
-            outline: 1px solid rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-        }
-
-        /* CONTEÚDO */
-        .content {
-            padding: 20px 25px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding-bottom: 80px;
-        }
-
-        /* INFORMAÇÕES DO PACIENTE */
-        .patient-info {
             background: #f8f9fa;
-            border-left: 4px solid #2c5aa0;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 0 6px 6px 0;
+            padding: 20px;
+            border-bottom: 2px solid #2c5aa0;
         }
 
-        .patient-row {
+        .doctor-info input {
+            margin-bottom: 10px;
+        }
+
+        /* Informações do Paciente */
+        .patient-info {
+            padding: 20px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .patient-info h3 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+        }
+
+        .patient-fields {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 8px;
         }
 
-        .patient-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .patient-field {
-            display: flex;
-            align-items: center;
-        }
-
-        .field-label {
-            font-weight: bold;
-            color: #2c5aa0;
-            margin-right: 8px;
-            min-width: 70px;
-            font-size: 13px;
-        }
-
-        .field-value {
-            color: #555;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: max(16px, 13px);
-            padding: 2px 5px;
-            border-bottom: 1px dashed #ccc;
-            flex: 1;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .field-value:focus {
-            border-bottom-color: #2c5aa0;
-            background: rgba(44, 90, 160, 0.05);
-            outline: 1px solid #2c5aa0;
-            border-radius: 4px;
-        }
-
-        /* CONTAINER DE FÓRMULAS */
+        /* Container de Fórmulas */
         .formulas-container {
-            margin-top: 15px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            padding: 20px;
         }
 
-        /* SEÇÃO DE FÓRMULA */
-        .formula-section {
-            background: #fff;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            overflow: visible;
+        .formula-item {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
             position: relative;
-            flex: 0 0 auto;
-            min-height: auto;
         }
 
-        /* BOTÃO REMOVER FÓRMULA */
-        .remove-formula-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
+        .formula-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .formula-number {
+            background: #2c5aa0;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .remove-formula {
             background: #dc3545;
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
             cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.8;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
+            font-size: 12px;
         }
 
-        .remove-formula-btn:hover,
-        .remove-formula-btn:active {
+        .remove-formula:hover {
             background: #c82333;
-            transform: scale(1.1);
-            opacity: 1;
         }
 
-        /* CABEÇALHO DA FÓRMULA */
-        .formula-header {
-            background: #2c5aa0 !important;
-            color: white !important;
-            padding: 8px 45px 8px 15px;
-            font-weight: bold;
-            font-size: 14px;
-            position: relative;
-            border-radius: 6px 6px 0 0;
-        }
-
-        .formula-header input {
-            background: transparent;
-            border: none;
-            color: white;
-            font-weight: bold;
-            font-size: max(16px, 14px);
-            width: 100%;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .formula-header input:focus {
-            outline: 1px solid rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-        }
-
-        /* CONTEÚDO DA FÓRMULA */
-        .formula-content {
-            padding: 12px;
-        }
-
-        .medication-item {
-            background: #f8f9fa;
-            border-radius: 4px;
-            padding: 10px;
-            border-left: 3px solid #28a745;
-        }
-
-        .medication-name {
-            font-weight: bold;
-            color: #2c5aa0;
-            font-size: max(16px, 13px);
-            margin-bottom: 5px;
-            border: none;
-            background: transparent;
-            width: 100%;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .medication-name:focus {
-            outline: 1px solid #2c5aa0;
-            background: rgba(44, 90, 160, 0.05);
-            border-radius: 4px;
-        }
-
-        .medication-composition {
-            font-size: max(16px, 11px);
-            color: #666;
-            line-height: 1.3;
-            margin-bottom: 6px;
-            border: none;
-            background: transparent;
-            width: 100%;
-            min-height: 80px;
-            resize: vertical;
-            overflow: visible;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .medication-composition:focus {
-            outline: 1px solid #2c5aa0;
-            background: rgba(44, 90, 160, 0.05);
-            border-radius: 4px;
-        }
-
-        .medication-instructions {
-            background: #e8f4f8 !important;
-            padding: 6px;
-            border-radius: 3px;
-            font-size: max(16px, 11px);
-            color: #2c5aa0;
-        }
-
-        .posology {
-            font-weight: bold;
-            color: #dc3545;
-            margin-bottom: 3px;
-            border: none;
-            background: transparent;
-            width: 100%;
-            font-size: max(16px, 11px);
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .posology:focus {
-            outline: 1px solid #dc3545;
-            background: rgba(220, 53, 69, 0.05);
-            border-radius: 4px;
-        }
-
-        .duration, .notes {
-            border: none;
-            background: transparent;
-            width: 100%;
-            margin-bottom: 2px;
-            font-size: max(16px, 11px);
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .duration:focus, .notes:focus {
-            outline: 1px solid #2c5aa0;
-            background: rgba(44, 90, 160, 0.05);
-            border-radius: 4px;
-        }
-
-        /* BOTÃO ADICIONAR FÓRMULA */
-        .add-formula-btn {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        /* Botões */
+        .btn {
+            background: #2c5aa0;
             color: white;
             border: none;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 4px;
             cursor: pointer;
-            margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 300px;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            align-self: center;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s;
         }
 
-        .add-formula-btn:hover,
-        .add-formula-btn:active {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        .btn:hover {
+            background: #1e4080;
         }
 
-        /* ASSINATURA */
-        .signature-section-highlight {
-            background: #f8f9fa;
-            border: 2px solid #2c5aa0;
-            border-radius: 8px;
-            padding: 35px;
-            margin: 30px 0;
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-success {
+            background: #28a745;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-container {
+            padding: 20px;
             text-align: center;
-            min-height: 200px;
         }
 
-        .signature-line-highlight {
-            border-bottom: 2px solid #2c5aa0;
+        /* Assinatura */
+        .signature-section {
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .signature-line {
             width: 300px;
-            height: 60px;
-            margin: 25px auto 20px;
+            height: 1px;
+            background: #333;
+            margin: 40px auto 10px;
         }
 
-        .doctor-details-highlight {
-            margin-top: 15px;
-        }
-
-        .doctor-details-highlight input {
-            font-size: max(16px, 14px);
-            color: #2c5aa0;
-            border: none;
-            background: transparent;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 5px;
-            font-weight: bold;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .doctor-details-highlight input:focus {
-            outline: 1px solid #2c5aa0;
-            background: rgba(44, 90, 160, 0.05);
-            border-radius: 4px;
-        }
-
-        .signature-date {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #2c5aa0;
-            font-style: italic;
-        }
-
-        /* CRONOGRAMA */
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 12px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .schedule-table th,
-        .schedule-table td {
-            border: 1px solid #dee2e6;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .schedule-table th {
-            background: #2c5aa0 !important;
-            color: white !important;
-            font-weight: bold;
-        }
-
-        .schedule-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .schedule-table textarea {
-            border: none;
-            background: transparent;
-            width: 100%;
-            text-align: center;
-            resize: vertical;
-            font-size: max(16px, 11px);
-            min-height: 40px;
-            overflow: visible;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .schedule-table textarea:focus {
-            outline: 1px solid #2c5aa0;
-            background: rgba(44, 90, 160, 0.05);
-            border-radius: 4px;
-        }
-
-        /* ADVERTÊNCIAS */
-        .warnings {
-            background: #fff3cd !important;
-            border: 1px solid #ffeaa7;
-            border-radius: 6px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-
-        .warning-title {
-            font-weight: bold;
-            color: #856404;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            border: none;
-            background: transparent;
-            width: 100%;
-            font-size: max(16px, 1rem);
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .warning-title:focus {
-            outline: 1px solid #856404;
-            background: rgba(133, 100, 4, 0.05);
-            border-radius: 4px;
-        }
-
-        .warning-title::before {
-            content: "⚠️";
-            margin-right: 8px;
-        }
-
-        .warning-list {
-            font-size: max(16px, 12px);
-            color: #856404;
-            line-height: 1.4;
-            border: none;
-            background: transparent;
-            width: 100%;
-            min-height: 100px;
-            resize: vertical;
-            overflow: visible;
-            -webkit-appearance: none;
-            touch-action: manipulation;
-        }
-
-        .warning-list:focus {
-            outline: 1px solid #856404;
-            background: rgba(133, 100, 4, 0.05);
-            border-radius: 4px;
-        }
-
-        /* RODAPÉ FIXO AZUL */
-        .contact-footer {
-            background: #2c5aa0 !important;
-            color: white !important;
-            padding: 15px 30px;
-            text-align: center;
-            font-size: 12px;
-            line-height: 1.5;
+        /* Rodapé Fixo */
+        .footer-fixed {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            width: 100%;
-            z-index: 100;
-            padding-left: max(30px, env(safe-area-inset-left));
-            padding-right: max(30px, env(safe-area-inset-right));
-            padding-bottom: max(15px, env(safe-area-inset-bottom));
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        }
-
-        /* BOTÃO IMPRIMIR/PDF */
-        .print-btn {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: #2c5aa0;
             color: white;
-            border: none;
-            padding: 18px 45px;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 25px auto;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-            transition: all 0.3s ease;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        /* PWA Install Banner */
+        .pwa-banner {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 20px;
+            display: none;
+            z-index: 999;
+        }
+
+        .pwa-banner.show {
             display: block;
-            width: auto;
-            min-width: 250px;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
+            animation: slideUp 0.3s ease-out;
         }
 
-        .print-btn:hover,
-        .print-btn:active {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-        }
-
-        .print-btn::before {
-            content: "📄 ";
-            font-size: 20px;
-            margin-right: 8px;
-        }
-
-        /* ESTILOS DE IMPRESSÃO SUPER OTIMIZADOS */
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            body {
-                background: white !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                font-size: 12px !important;
-                line-height: 1.3 !important;
-            }
-            
-            @page {
-                size: A4;
-                margin: 15mm 12mm 20mm 12mm;
-            }
-            
-            .page {
-                box-shadow: none !important;
-                margin: 0 !important;
-                page-break-after: always;
-                min-height: auto !important;
-                height: auto !important;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                border-radius: 0 !important;
-                width: 100% !important;
-                max-width: none !important;
-                padding-bottom: 60px !important;
-                overflow: visible !important;
-            }
-
-            .page:last-child {
-                page-break-after: avoid;
-            }
-            
-            .page.empty {
-                display: none !important;
-            }
-            
-            /* Elementos que não devem aparecer na impressão */
-            .add-formula-btn, 
-            .print-btn,
-            .remove-formula-btn,
-            .pwa-install-prompt,
-            .app-splash {
-                display: none !important;
-            }
-            
-            .content {
-                padding: 12px 15px !important;
-                flex: 1;
-                margin-bottom: 35px !important;
-            }
-            
-            /* Otimizações de quebra de página */
-            .formula-section {
-                overflow: visible !important;
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                margin-bottom: 12px !important;
-            }
-            
-            .signature-section-highlight {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                padding: 25px 15px !important;
-                margin: 20px 0 !important;
-                min-height: 150px !important;
-            }
-            
-            .warnings {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                margin: 10px 0 !important;
-                padding: 12px !important;
-            }
-            
-            .schedule-table {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                font-size: 11px !important;
-            }
-            
-            /* Manter cores importantes na impressão */
-            .header {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                border-radius: 0 !important;
-                padding: 15px 20px !important;
-            }
-
-            .prescription-title {
-                background: #2c5aa0 !important;
-                color: white !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                border-radius: 0 !important;
-                padding: 10px 20px !important;
-                font-size: 14px !important;
-            }
-
-            .formula-header {
-                background: #2c5aa0 !important;
-                color: white !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                border-radius: 0 !important;
-                padding: 8px 15px !important;
-                font-size: 13px !important;
-            }
-
-            .medication-instructions {
-                background: #e8f4f8 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                padding: 8px !important;
-                font-size: 10px !important;
-            }
-
-            .schedule-table th {
-                background: #2c5aa0 !important;
-                color: white !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                padding: 8px !important;
-            }
-
-            .schedule-table td {
-                padding: 6px !important;
-            }
-
-            .warnings {
-                background: #fff3cd !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            
-            /* Rodapé fixo na impressão */
-            .contact-footer {
-                position: fixed !important;
-                bottom: 0 !important;
-                left: 0 !important;
-                right: 0 !important;
-                width: 100% !important;
-                background: #2c5aa0 !important;
-                color: white !important;
-                padding: 8px 15px !important;
-                font-size: 10px !important;
-                text-align: center !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                line-height: 1.3 !important;
-                box-shadow: none !important;
-            }
-            
-            /* Ajustes específicos para campos */
-            .patient-info {
-                padding: 10px !important;
-                margin-bottom: 12px !important;
-            }
-            
-            .patient-row {
-                margin-bottom: 6px !important;
-                gap: 12px !important;
-            }
-            
-            .field-label {
-                font-size: 11px !important;
-                min-width: 60px !important;
-            }
-            
-            .field-value {
-                font-size: 11px !important;
-                border-bottom: 1px dashed #999 !important;
-            }
-            
-            .doctor-name {
-                font-size: 18px !important;
-            }
-            
-            .specialty {
-                font-size: 14px !important;
-            }
-            
-            .credentials {
-                font-size: 12px !important;
-            }
-            
-            .signature-line-highlight {
-                height: 50px !important;
-                margin: 15px auto !important;
-                width: 250px !important;
-            }
-            
-            .warning-list {
-                font-size: 10px !important;
-                min-height: auto !important;
-                height: auto !important;
-                line-height: 1.3 !important;
-            }
-
-            .medication-composition {
-                font-size: 10px !important;
-                line-height: 1.2 !important;
-                min-height: auto !important;
-            }
-
-            .schedule-table textarea {
-                font-size: 10px !important;
-                min-height: auto !important;
-            }
-
-            /* Forçar quebras apropriadas */
-            h1, h2, h3, h4, h5, h6 {
-                page-break-after: avoid !important;
-            }
-            
-            p, div {
-                orphans: 3 !important;
-                widows: 3 !important;
-            }
-
-            /* Garantir que inputs apareçam com valores na impressão */
-            input, textarea {
-                color: inherit !important;
-                background: transparent !important;
-                border: none !important;
-                box-shadow: none !important;
-                outline: none !important;
-            }
-        }
-
-        /* RESPONSIVIDADE MOBILE SUPER OTIMIZADA */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                padding-bottom: max(90px, env(safe-area-inset-bottom));
-                padding-left: max(10px, env(safe-area-inset-left));
-                padding-right: max(10px, env(safe-area-inset-right));
-            }
-            
-            .page {
-                width: 100%;
-                margin-bottom: 15px;
-                border-radius: 12px;
-                padding-bottom: 100px;
-            }
-            
-            .patient-row {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .doctor-info {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            
-            .contact-footer {
-                font-size: 11px;
-                padding: 12px 15px;
-            }
-            
-            .signature-line-highlight {
-                width: 250px;
-            }
-            
-            .signature-section-highlight {
-                padding: 25px 15px;
-            }
-
-            .pwa-install-prompt {
-                left: 10px;
-                right: 10px;
-                bottom: max(10px, env(safe-area-inset-bottom));
-            }
-
-            /* Melhor suporte a containers ajustáveis */
-            .medication-composition {
-                min-height: 100px;
-                resize: both;
-            }
-
-            .schedule-table textarea {
-                min-height: 50px;
-                resize: both;
-            }
-
-            .warning-list {
-                min-height: 120px;
-                resize: both;
-            }
-
-            /* Botões maiores para toque */
-            .remove-formula-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-            }
-
-            .add-formula-btn {
-                padding: 20px 30px;
-                font-size: 18px;
-            }
-
-            .print-btn {
-                padding: 20px 40px;
-                font-size: 20px;
-                margin: 30px auto;
-            }
-        }
-
-        /* Responsividade para telas muito pequenas */
-        @media (max-width: 375px) {
-            .doctor-logo {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-            
-            .header {
-                padding: 12px 15px;
-            }
-            
-            .content {
-                padding: 15px 20px;
-            }
-            
-            .pwa-prompt-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-
-            .schedule-table {
-                font-size: 11px;
-            }
-
-            .schedule-table th,
-            .schedule-table td {
-                padding: 6px;
-            }
-        }
-
-        /* Animações suaves e feedback visual */
-        @keyframes slideInUp {
+        @keyframes slideUp {
             from {
                 transform: translateY(100%);
                 opacity: 0;
@@ -1271,1029 +256,359 @@
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .pwa-banner h3 {
+            margin: 0 0 10px;
+            color: #2c5aa0;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .pwa-banner-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
         }
 
-        .animate-slide-up {
-            animation: slideInUp 0.4s ease-out;
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .pulse-btn {
-            animation: pulse 0.3s ease-out;
-        }
-
-        /* Estados de carregamento */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        /* Melhorias de acessibilidade */
-        button:focus,
-        input:focus,
-        textarea:focus {
-            outline-offset: 2px;
-        }
-
-        /* Feedback visual para instalação PWA */
-        .pwa-installing {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-        }
-
-        .pwa-installing .pwa-install-btn {
-            background: rgba(255,255,255,0.3);
-            color: white;
-            pointer-events: none;
-        }
-
-        /* Indicador de modo PWA */
-        .pwa-indicator {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #28a745;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 10px;
-            z-index: 1000;
-            display: none;
-        }
-
-        @media all and (display-mode: standalone) {
-            .pwa-indicator {
-                display: block;
+        /* Mobile Responsivo */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
             }
+
+            .container {
+                border-radius: 0;
+                margin-bottom: 80px;
+            }
+
+            .patient-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .signature-line {
+                width: 200px;
+            }
+
+            .footer-fixed {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+
+        /* Estilos de Impressão */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+                margin-bottom: 0;
+                max-width: 100%;
+            }
+
+            .btn, .pwa-banner, .remove-formula {
+                display: none !important;
+            }
+
+            .footer-fixed {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                page-break-after: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Forçar rodapé na última página */
+            @page {
+                margin-bottom: 50px;
+            }
+
+            .formula-item {
+                page-break-inside: avoid;
+            }
+
+            .signature-section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2c5aa0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    
-    <!-- Indicador PWA -->
-    <div class="pwa-indicator">📱 APP</div>
-
-    <!-- SPLASH SCREEN PERSONALIZADA -->
-    <div class="app-splash" id="appSplash">
-        <div class="splash-logo">🩺</div>
-        <div class="splash-title">Prescrição Pech App</div>
-        <div class="splash-subtitle">Carregando aplicativo...</div>
-        <div class="splash-loading"></div>
-    </div>
-
-    <!-- PWA INSTALL PROMPT MELHORADO -->
-    <div class="pwa-install-prompt" id="pwaInstallPrompt">
-        <div class="pwa-prompt-header">
-            <div class="pwa-prompt-icon">📱</div>
-            <div class="pwa-prompt-text">
-                <h3>Instalar Aplicativo</h3>
-                <p>Adicione à sua tela inicial</p>
-            </div>
-        </div>
-        
-        <div class="pwa-install-steps">
-            <div class="pwa-step">
-                <div class="pwa-step-number">1</div>
-                <span>Toque no botão "Instalar" abaixo</span>
-            </div>
-            <div class="pwa-step">
-                <div class="pwa-step-number">2</div>
-                <span>Ou use Menu → "Adicionar à tela inicial"</span>
-            </div>
-            <div class="pwa-step">
-                <div class="pwa-step-number">3</div>
-                <span>Confirme a instalação</span>
-            </div>
-        </div>
-        
-        <div class="pwa-install-buttons">
-            <button class="pwa-install-btn" onclick="installPWA()">
-                📲 Instalar App
-            </button>
-            <button class="pwa-dismiss-btn" onclick="dismissPWA()">
-                Agora não
-            </button>
-        </div>
-    </div>
-
-    <!-- PÁGINA 1 - PRIMEIRA PRESCRIÇÃO -->
-    <div class="page" id="page1">
-        <!-- CABEÇALHO -->
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- Cabeçalho -->
         <div class="header">
-            <div class="header-content">
-                <div class="doctor-logo">GP</div>
-                <div class="doctor-info">
-                    <input type="text" class="doctor-name" value="Dr. Guili Pech" placeholder="Nome do Médico">
-                    <input type="text" class="specialty" value="Cardiologia Clínica" placeholder="Especialidade">
-                    <input type="text" class="credentials" value="CRM 52.86323-8 | RQE Cardiologia: 25121" placeholder="Credenciais">
-                </div>
-            </div>
-            
-            <div class="prescription-title">
-                <input type="text" value="PRESCRIÇÃO MÉDICA - USO ORAL" placeholder="Título da Prescrição">
+            <h1>PRESCRIÇÃO MÉDICA</h1>
+            <p>Receituário Digital Profissional</p>
+        </div>
+
+        <!-- Informações do Médico -->
+        <div class="doctor-info">
+            <input type="text" id="doctorName" placeholder="Nome do Médico" value="Dr. Guili Pech">
+            <input type="text" id="doctorSpecialty" placeholder="Especialidade" value="Cardiologia Clínica">
+            <input type="text" id="doctorCRM" placeholder="CRM" value="CRM 52.86323-8 | RQE: 25121">
+        </div>
+
+        <!-- Informações do Paciente -->
+        <div class="patient-info">
+            <h3>Dados do Paciente</h3>
+            <div class="patient-fields">
+                <input type="text" id="patientName" placeholder="Nome do Paciente">
+                <input type="text" id="patientAge" placeholder="Idade">
+                <input type="text" id="patientCPF" placeholder="CPF">
+                <input type="text" id="patientDate" placeholder="Data">
             </div>
         </div>
 
-        <div class="content">
-            <!-- DADOS DO PACIENTE -->
-            <div class="patient-info">
-                <div class="patient-row">
-                    <div class="patient-field">
-                        <span class="field-label">Nome:</span>
-                        <input type="text" class="field-value" value="Maria Silva Santos" placeholder="Nome completo">
-                    </div>
-                    <div class="patient-field">
-                        <span class="field-label">Idade:</span>
-                        <input type="text" class="field-value" value="65 anos" placeholder="Idade">
-                    </div>
+        <!-- Container de Fórmulas -->
+        <div class="formulas-container" id="formulasContainer">
+            <!-- Fórmula Inicial -->
+            <div class="formula-item" data-formula-id="1">
+                <div class="formula-header">
+                    <span class="formula-number">Fórmula 1</span>
+                    <button class="remove-formula" onclick="removeFormula(1)">Remover</button>
                 </div>
-                
-                <div class="patient-row">
-                    <div class="patient-field">
-                        <span class="field-label">CPF:</span>
-                        <input type="text" class="field-value" value="123.456.789-00" placeholder="CPF">
-                    </div>
-                    <div class="patient-field">
-                        <span class="field-label">Data:</span>
-                        <input type="text" class="field-value" value="" placeholder="Data da consulta">
-                    </div>
-                </div>
+                <input type="text" placeholder="Nome da Fórmula" class="formula-name">
+                <textarea placeholder="Composição da fórmula"></textarea>
+                <input type="text" placeholder="Posologia">
+                <input type="text" placeholder="Duração do tratamento">
             </div>
-
-            <!-- CONTAINER DE FÓRMULAS -->
-            <div class="formulas-container">
-                <!-- FÓRMULA 1 -->
-                <div class="formula-section" data-formula-id="1">
-                    <button class="remove-formula-btn" onclick="removeFormula(1)" title="Remover esta fórmula">
-                        ✖
-                    </button>
-                    <div class="formula-header">
-                        <input type="text" value="1️⃣ FÓRMULA IMUNO-RESPIRATÓRIA" placeholder="Nome da fórmula">
-                    </div>
-                    <div class="formula-content">
-                        <div class="medication-item">
-                            <input type="text" class="medication-name" value="Manipular em comprimidos:" placeholder="Tipo de manipulação">
-                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Vitamina C ................................ 500mg
-• Zinco quelato ............................. 15mg
-• Vitamina D3 .............................. 2000UI
-• Própolis seco ............................. 200mg
-• Echinacea purpurea .................... 150mg
-• Excipiente qsp ........................... 1 comprimido</textarea>
-                            <div class="medication-instructions">
-                                <input type="text" class="posology" value="Posologia: 1 comprimido pela manhã" placeholder="Posologia">
-                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
-                                <input type="text" class="notes" value="Tomar com café da manhã" placeholder="Observações">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FÓRMULA 2 -->
-                <div class="formula-section" data-formula-id="2">
-                    <button class="remove-formula-btn" onclick="removeFormula(2)" title="Remover esta fórmula">
-                        ✖
-                    </button>
-                    <div class="formula-header">
-                        <input type="text" value="2️⃣ FÓRMULA SONO E RELAXAMENTO" placeholder="Nome da fórmula">
-                    </div>
-                    <div class="formula-content">
-                        <div class="medication-item">
-                            <input type="text" class="medication-name" value="Manipular em sachês:" placeholder="Tipo de manipulação">
-                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Melatonina ................................ 3mg
-• Magnésio bisglicinato .................. 200mg
-• L-teanina .................................. 100mg
-• Camomila extrato seco ................. 150mg
-• Maracujá extrato seco .................. 100mg
-• Excipiente qsp ........................... 1 sachê</textarea>
-                            <div class="medication-instructions">
-                                <input type="text" class="posology" value="Posologia: 1 sachê por noite" placeholder="Posologia">
-                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
-                                <input type="text" class="notes" value="Dissolver em 200ml de água, 1-2h antes de dormir" placeholder="Observações">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="add-formula-btn" onclick="addFormula()">
-                ➕ Adicionar Nova Fórmula
-            </button>
-
-            <!-- CRONOGRAMA DE MEDICAÇÃO -->
-            <div style="margin-top: 25px;">
-                <h3 style="color: #2c5aa0; margin-bottom: 15px; font-size: 18px;">📅 CRONOGRAMA DE MEDICAÇÃO</h3>
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>HORÁRIO</th>
-                            <th>MEDICAMENTO</th>
-                            <th>OBSERVAÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody id="scheduleTableBody">
-                        <tr data-schedule-id="1">
-                            <td><textarea>8h00
-(manhã)</textarea></td>
-                            <td><textarea>• 1 dose Fórmula Imuno-respiratória</textarea></td>
-                            <td><textarea>Com café da manhã</textarea></td>
-                        </tr>
-                        <tr data-schedule-id="2">
-                            <td><textarea>21h00
-(noite)</textarea></td>
-                            <td><textarea>• 1 sachê Fórmula Sono e Relaxamento</textarea></td>
-                            <td><textarea>1-2h antes de dormir, dissolver em 200ml água</textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- ADVERTÊNCIAS -->
-            <div class="warnings">
-                <input type="text" class="warning-title" value="ADVERTÊNCIAS E CUIDADOS ESPECIAIS" placeholder="Título das advertências">
-                <textarea class="warning-list" placeholder="Digite as advertências">• Manter medicamentos em local seco e protegido da luz
-• Não exceder as doses recomendadas
-• Em caso de reações adversas, suspender uso e comunicar ao médico
-• Medicamentos manipulados devem ser armazenados conforme orientação da farmácia
-• Retorno em 30 dias para avaliação e ajustes se necessário
-• Manter alimentação equilibrada e hidratação adequada durante tratamento</textarea>
-            </div>
-
-            <!-- ASSINATURA -->
-            <div class="signature-section-highlight">
-                <div class="signature-line-highlight"></div>
-                <div class="doctor-details-highlight">
-                    <input type="text" value="Dr. Guili Pech" placeholder="Nome do médico">
-                    <input type="text" value="Cardiologia Clínica" placeholder="Especialidade">
-                    <input type="text" value="CRM 52.86323-8 | RQE: 25121" placeholder="Registro profissional">
-                </div>
-                <div class="signature-date">
-                    Rio de Janeiro, 31 de maio de 2025
-                </div>
-            </div>
-
-            <button class="print-btn" onclick="generatePDF()">
-                GERAR PDF
-            </button>
         </div>
 
-        <!-- RODAPÉ AZUL FIXO -->
-        <div class="contact-footer">
-            <div>📍 Condomínio Le Monde, Av. das Américas 3500, bloco 4, portaria 2, sala 210 | 📞 (21) 99341-8607</div>
+        <!-- Botão Adicionar Fórmula -->
+        <div class="btn-container">
+            <button class="btn btn-success" onclick="addFormula()">+ Adicionar Fórmula</button>
+        </div>
+
+        <!-- Seção de Assinatura -->
+        <div class="signature-section">
+            <div class="signature-line"></div>
+            <p id="doctorSignature">Dr. Guili Pech</p>
+            <p>CRM 52.86323-8</p>
+        </div>
+
+        <!-- Botão Gerar PDF -->
+        <div class="btn-container">
+            <button class="btn" onclick="generatePDF()">
+                📄 Gerar PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Rodapé Fixo -->
+    <div class="footer-fixed">
+        📍 Condomínio Le Monde, Av. das Américas 3500, Bloco 4, Sala 210 | 📞 (21) 99341-8607
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div class="pwa-banner" id="pwaBanner">
+        <h3>📱 Instalar Aplicativo</h3>
+        <p>Adicione o Prescrição Pech à sua tela inicial para acesso rápido!</p>
+        <div class="pwa-banner-buttons">
+            <button class="btn" onclick="installPWA()">Instalar</button>
+            <button class="btn" style="background: #6c757d" onclick="dismissPWA()">Agora não</button>
         </div>
     </div>
 
     <script>
-        // ======= VARIÁVEIS GLOBAIS =======
-        let formulaCount = 2;
-        let actionHistory = [];
-        let removedFormulas = [];
-        let deferredPrompt = null;
-        let isFirstVisit = true;
-        let isInstalling = false;
+        // Variáveis globais
+        let formulaCount = 1;
+        let deferredPrompt;
 
-        // ======= PWA FUNCTIONALITY APRIMORADA =======
-        
-        // Detecta se está rodando como PWA
-        function isPWA() {
-            return window.matchMedia('(display-mode: standalone)').matches ||
-                   window.navigator.standalone === true;
-        }
+        // Auto preencher data atual
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('pt-BR');
+            document.getElementById('patientDate').value = dateStr;
 
-        // Mostra splash screen personalizada
-        function showAppSplash() {
-            const splash = document.getElementById('appSplash');
-            splash.classList.add('show');
-            
-            setTimeout(() => {
-                splash.classList.remove('show');
-            }, 2500);
-        }
-
-        // Service Worker Registration com cache otimizado
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', async () => {
-                try {
-                    const swCode = `
-                        const CACHE_NAME = 'prescricao-pech-v3.0.0';
-                        const urlsToCache = [
-                            '/',
-                            '/index.html'
-                        ];
-
-                        self.addEventListener('install', (event) => {
-                            console.log('SW: Installing...');
-                            event.waitUntil(
-                                caches.open(CACHE_NAME)
-                                    .then((cache) => {
-                                        console.log('SW: Caching files');
-                                        return cache.addAll(urlsToCache);
-                                    })
-                            );
-                            self.skipWaiting();
-                        });
-
-                        self.addEventListener('activate', (event) => {
-                            console.log('SW: Activating...');
-                            event.waitUntil(
-                                caches.keys().then((cacheNames) => {
-                                    return Promise.all(
-                                        cacheNames.map((cacheName) => {
-                                            if (cacheName !== CACHE_NAME) {
-                                                console.log('SW: Deleting old cache:', cacheName);
-                                                return caches.delete(cacheName);
-                                            }
-                                        })
-                                    );
-                                }).then(() => {
-                                    console.log('SW: Claiming clients');
-                                    return self.clients.claim();
-                                })
-                            );
-                        });
-
-                        self.addEventListener('fetch', (event) => {
-                            if (event.request.method !== 'GET') return;
-                            
-                            event.respondWith(
-                                caches.match(event.request)
-                                    .then((response) => {
-                                        if (response) {
-                                            console.log('SW: Serving from cache:', event.request.url);
-                                            return response;
-                                        }
-                                        
-                                        console.log('SW: Fetching from network:', event.request.url);
-                                        return fetch(event.request)
-                                            .then((response) => {
-                                                if (!response || response.status !== 200 || response.type !== 'basic') {
-                                                    return response;
-                                                }
-                                                
-                                                const responseToCache = response.clone();
-                                                caches.open(CACHE_NAME)
-                                                    .then((cache) => {
-                                                        cache.put(event.request, responseToCache);
-                                                    });
-                                                return response;
-                                            })
-                                            .catch(() => {
-                                                // Offline fallback melhorado
-                                                if (event.request.headers.get('accept').includes('text/html')) {
-                                                    return new Response(
-                                                        \`<!DOCTYPE html>
-                                                        <html>
-                                                        <head>
-                                                            <title>Prescrição Pech - Offline</title>
-                                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                                            <style>
-                                                                body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
-                                                                       text-align: center; padding: 50px 20px; background: #f8f9fa; }
-                                                                .offline-container { max-width: 400px; margin: 0 auto; }
-                                                                .offline-icon { font-size: 64px; margin-bottom: 20px; }
-                                                                h1 { color: #2c5aa0; margin-bottom: 16px; }
-                                                                p { color: #666; line-height: 1.5; }
-                                                            </style>
-                                                        </head>
-                                                        <body>
-                                                            <div class="offline-container">
-                                                                <div class="offline-icon">📱</div>
-                                                                <h1>Prescrição Pech App</h1>
-                                                                <p>Você está offline, mas o aplicativo ainda funciona! 
-                                                                   Suas prescrições são salvas localmente.</p>
-                                                            </div>
-                                                        </body>
-                                                        </html>\`,
-                                                        { 
-                                                            headers: { 
-                                                                'Content-Type': 'text/html',
-                                                                'Cache-Control': 'no-cache'
-                                                            } 
-                                                        }
-                                                    );
-                                                }
-                                            });
-                                    })
-                            );
-                        });
-                    `;
-                    
-                    const blob = new Blob([swCode], { type: 'application/javascript' });
-                    const swUrl = URL.createObjectURL(blob);
-                    
-                    const registration = await navigator.serviceWorker.register(swUrl);
-                    console.log('SW registrado com sucesso:', registration);
-                } catch (error) {
-                    console.log('SW falhou ao registrar:', error);
-                }
+            // Sincronizar nome do médico com assinatura
+            document.getElementById('doctorName').addEventListener('input', function() {
+                document.getElementById('doctorSignature').textContent = this.value;
             });
+
+            // Registrar Service Worker
+            registerServiceWorker();
+
+            // Verificar se deve mostrar banner PWA
+            checkPWAStatus();
+        });
+
+        // Função para adicionar fórmula
+        function addFormula() {
+            formulaCount++;
+            const container = document.getElementById('formulasContainer');
+            
+            const newFormula = document.createElement('div');
+            newFormula.className = 'formula-item';
+            newFormula.dataset.formulaId = formulaCount;
+            
+            newFormula.innerHTML = `
+                <div class="formula-header">
+                    <span class="formula-number">Fórmula ${formulaCount}</span>
+                    <button class="remove-formula" onclick="removeFormula(${formulaCount})">Remover</button>
+                </div>
+                <input type="text" placeholder="Nome da Fórmula" class="formula-name">
+                <textarea placeholder="Composição da fórmula"></textarea>
+                <input type="text" placeholder="Posologia">
+                <input type="text" placeholder="Duração do tratamento">
+            `;
+            
+            container.appendChild(newFormula);
+            
+            // Scroll suave até a nova fórmula
+            newFormula.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // PWA Install Prompt melhorado
+        // Função para remover fórmula
+        function removeFormula(id) {
+            if (confirm('Deseja remover esta fórmula?')) {
+                const formula = document.querySelector(`[data-formula-id="${id}"]`);
+                if (formula) {
+                    formula.style.opacity = '0';
+                    formula.style.transform = 'translateX(-100%)';
+                    setTimeout(() => formula.remove(), 300);
+                }
+            }
+        }
+
+        // Função para gerar PDF (impressão)
+        function generatePDF() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            
+            // Mostrar loading
+            btn.innerHTML = '📄 Gerando PDF <span class="loading"></span>';
+            btn.disabled = true;
+            
+            // Pequeno delay para feedback visual
+            setTimeout(() => {
+                window.print();
+                
+                // Restaurar botão
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 500);
+        }
+
+        // Service Worker para PWA
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                // Criar service worker inline
+                const swContent = `
+                    const CACHE_NAME = 'prescricao-pech-v1';
+                    const urlsToCache = [
+                        '/',
+                        '/index.html'
+                    ];
+
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then(cache => cache.addAll(urlsToCache))
+                        );
+                    });
+
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then(response => response || fetch(event.request))
+                        );
+                    });
+                `;
+
+                const blob = new Blob([swContent], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+
+                navigator.serviceWorker.register(swUrl)
+                    .then(reg => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Service Worker falhou:', err));
+            }
+        }
+
+        // PWA Install Prompt
         window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('PWA install prompt triggered');
             e.preventDefault();
             deferredPrompt = e;
             
-            // Mostra o prompt após o usuário interagir com a página
+            // Mostrar banner após 3 segundos
             setTimeout(() => {
-                if (isFirstVisit && !isPWA() && !isInstalling) {
-                    showPWAInstallPrompt();
-                    isFirstVisit = false;
+                if (!localStorage.getItem('pwa-dismissed')) {
+                    document.getElementById('pwaBanner').classList.add('show');
                 }
-            }, 4000);
+            }, 3000);
         });
-
-        // Detecta quando o app é instalado
-        window.addEventListener('appinstalled', () => {
-            console.log('PWA foi instalado com sucesso!');
-            deferredPrompt = null;
-            hidePWAInstallPrompt();
-            localStorage.setItem('pwa-installed', 'true');
-            
-            // Mostra splash screen de sucesso
-            showSuccessMessage();
-        });
-
-        function showPWAInstallPrompt() {
-            if (localStorage.getItem('pwa-installed') === 'true' || 
-                localStorage.getItem('pwa-dismissed') === 'true') {
-                return;
-            }
-            
-            const prompt = document.getElementById('pwaInstallPrompt');
-            if (prompt && (deferredPrompt || /iPhone|iPad|iPod/.test(navigator.userAgent))) {
-                prompt.classList.add('show');
-            }
-        }
-
-        function hidePWAInstallPrompt() {
-            const prompt = document.getElementById('pwaInstallPrompt');
-            if (prompt) {
-                prompt.classList.remove('show');
-            }
-        }
 
         function installPWA() {
-            isInstalling = true;
-            
             if (deferredPrompt) {
-                // Adiciona feedback visual
-                const prompt = document.getElementById('pwaInstallPrompt');
-                prompt.classList.add('pwa-installing');
-                
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((result) => {
-                    console.log('User choice:', result);
-                    
                     if (result.outcome === 'accepted') {
-                        console.log('Usuário aceitou a instalação');
-                        localStorage.setItem('pwa-installed', 'true');
-                        showSuccessMessage();
-                    } else {
-                        console.log('Usuário rejeitou a instalação');
-                        prompt.classList.remove('pwa-installing');
-                        isInstalling = false;
+                        console.log('PWA instalado');
                     }
-                    
                     deferredPrompt = null;
-                    hidePWAInstallPrompt();
+                    document.getElementById('pwaBanner').classList.remove('show');
                 });
-            } else {
-                // Fallback para dispositivos que não suportam auto-install
-                showManualInstallInstructions();
-                hidePWAInstallPrompt();
-                isInstalling = false;
             }
         }
 
         function dismissPWA() {
-            hidePWAInstallPrompt();
-            deferredPrompt = null;
-            
-            // Salva que foi rejeitado (válido por 7 dias)
-            const dismissedUntil = Date.now() + (7 * 24 * 60 * 60 * 1000);
+            document.getElementById('pwaBanner').classList.remove('show');
             localStorage.setItem('pwa-dismissed', 'true');
-            localStorage.setItem('pwa-dismissed-until', dismissedUntil.toString());
         }
 
-        function showSuccessMessage() {
-            const successHTML = \`
-                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
-                           background: rgba(0,0,0,0.8); display: flex; align-items: center; 
-                           justify-content: center; z-index: 10000; color: white; text-align: center;">
-                    <div style="background: linear-gradient(135deg, #28a745, #20c997); 
-                               padding: 40px; border-radius: 20px; max-width: 350px;">
-                        <div style="font-size: 64px; margin-bottom: 20px;">✅</div>
-                        <h2 style="margin: 0 0 16px 0;">Instalado com Sucesso!</h2>
-                        <p style="margin: 0; opacity: 0.9;">
-                            O ícone "Prescrição Pech" foi adicionado à sua tela inicial.
-                        </p>
-                    </div>
-                </div>
-            \`;
-            
-            document.body.insertAdjacentHTML('beforeend', successHTML);
-            
-            setTimeout(() => {
-                const successEl = document.body.lastElementChild;
-                successEl.style.opacity = '0';
-                successEl.style.transition = 'opacity 0.3s ease';
-                setTimeout(() => successEl.remove(), 300);
-            }, 3000);
-        }
-
-        function showManualInstallInstructions() {
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            const instructions = isIOS ? 
-                'No Safari: toque em Compartilhar ⬆️ → Adicionar à Tela de Início' :
-                'No Chrome: toque no menu ⋮ → Adicionar à tela inicial';
-                
-            alert(\`📱 Para instalar como aplicativo:\n\n\${instructions}\`);
-        }
-
-        // Verifica se o dismiss expirou
-        function checkDismissStatus() {
-            const dismissedUntil = localStorage.getItem('pwa-dismissed-until');
-            if (dismissedUntil && Date.now() > parseInt(dismissedUntil)) {
-                localStorage.removeItem('pwa-dismissed');
-                localStorage.removeItem('pwa-dismissed-until');
+        function checkPWAStatus() {
+            // Verificar se está rodando como PWA
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('Rodando como PWA');
+                document.body.style.paddingTop = '20px';
             }
         }
 
-        // ======= MAPEAMENTO DE FÓRMULAS PARA CRONOGRAMA =======
-        const formulaSchedule = {
-            1: { time: '8h00\\n(manhã)', medication: '• 1 dose Fórmula Imuno-respiratória', observation: 'Com café da manhã' },
-            2: { time: '21h00\\n(noite)', medication: '• 1 sachê Fórmula Sono e Relaxamento', observation: '1-2h antes de dormir, dissolver em 200ml água' }
-        };
-
-        // ======= FUNÇÕES DE TEXTAREA AUTO-RESIZE =======
-        function autoResizeTextarea(textarea) {
-            textarea.style.height = 'auto';
-            const minHeight = textarea.classList.contains('medication-composition') ? 80 : 40;
-            const newHeight = Math.max(minHeight, textarea.scrollHeight);
-            textarea.style.height = newHeight + 'px';
-        }
-
-        function addTextareaListeners() {
-            const textareas = document.querySelectorAll('textarea');
-            textareas.forEach(textarea => {
-                autoResizeTextarea(textarea);
-                
-                textarea.addEventListener('input', function() {
-                    autoResizeTextarea(this);
-                });
-                
-                textarea.addEventListener('focus', function() {
-                    autoResizeTextarea(this);
-                });
-                
-                textarea.addEventListener('paste', function() {
-                    setTimeout(() => autoResizeTextarea(this), 10);
-                });
-
-                // Adiciona suporte a resize manual no mobile
-                if (window.innerWidth <= 768) {
-                    textarea.addEventListener('touchstart', function() {
-                        this.style.resize = 'both';
-                    });
-                }
-            });
-        }
-
-        // ======= INICIALIZAÇÃO =======
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🩺 Prescrição Pech App carregada');
-            console.log('PWA Mode:', isPWA());
-            
-            // Mostra splash screen se for primeira visita ou PWA
-            if (isPWA() || isFirstVisit) {
-                showAppSplash();
+        // Prevenir zoom em double tap no iOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
             }
-            
-            // Inicializar funcionalidades
-            syncDoctorData();
-            updateSchedule();
-            checkEmptyPages();
-            addTextareaListeners();
-            checkDismissStatus();
-            updateCurrentDate();
-            
-            // Configurações específicas para PWA
-            if (isPWA()) {
-                document.body.classList.add('pwa-mode');
-                console.log('Rodando como PWA instalado');
-                
-                // Mostra indicador PWA
-                setTimeout(() => {
-                    const indicator = document.querySelector('.pwa-indicator');
-                    if (indicator) {
-                        indicator.style.opacity = '1';
-                    }
-                }, 1000);
-            }
+            lastTouchEnd = now;
+        }, false);
 
-            // Auto-prompt para dispositivos móveis
-            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && !isPWA()) {
-                setTimeout(() => {
-                    if (!localStorage.getItem('pwa-installed') && !localStorage.getItem('pwa-dismissed')) {
-                        showPWAInstallPrompt();
-                    }
-                }, 6000);
-            }
-        });
-
-        // ======= ATUALIZAÇÃO DE DATA =======
-        function updateCurrentDate() {
-            const today = new Date();
-            const formattedDate = today.toLocaleDateString('pt-BR');
-            
-            // Atualizar campos de data vazios
-            const dateFields = document.querySelectorAll('.field-value');
-            dateFields.forEach(field => {
-                if (field.placeholder === 'Data da consulta' && field.value === '') {
-                    field.value = formattedDate;
-                }
-            });
-            
-            // Atualizar data da assinatura
-            const signatureDate = document.querySelector('.signature-date');
-            if (signatureDate) {
-                const cityName = 'Rio de Janeiro';
-                const months = [
-                    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
-                    'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
-                ];
-                
-                const day = today.getDate();
-                const month = months[today.getMonth()];
-                const year = today.getFullYear();
-                
-                signatureDate.textContent = \`\${cityName}, \${day} de \${month} de \${year}\`;
-            }
-        }
-
-        // ======= GERENCIAMENTO DE FÓRMULAS =======
-        function addFormula() {
-            formulaCount++;
-            
-            const action = {
-                type: 'add',
-                formulaId: formulaCount,
-                timestamp: Date.now()
-            };
-            
-            const newFormulaHTML = createFormulaHTML(formulaCount);
-            
-            const currentContainer = document.querySelector('.formulas-container');
-            currentContainer.insertAdjacentHTML('beforeend', newFormulaHTML);
-            
-            addScheduleRow(formulaCount);
-            actionHistory.push(action);
-            syncDoctorData();
-            checkEmptyPages();
-            addTextareaListeners();
-            
-            // Animar entrada da nova fórmula
-            const newFormula = document.querySelector(\`[data-formula-id="\${formulaCount}"]\`);
-            if (newFormula) {
-                newFormula.classList.add('animate-slide-up');
-                
-                // Scroll para a nova fórmula
-                setTimeout(() => {
-                    newFormula.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 200);
-            }
-
-            // Feedback visual no botão
-            const addBtn = document.querySelector('.add-formula-btn');
-            addBtn.classList.add('pulse-btn');
-            setTimeout(() => addBtn.classList.remove('pulse-btn'), 300);
-        }
-
-        function removeFormula(formulaId) {
-            const formula = document.querySelector(\`[data-formula-id="\${formulaId}"]\`);
-            if (!formula) return;
-            
-            // Não permitir remover se só tem uma fórmula
-            const totalFormulas = document.querySelectorAll('.formula-section').length;
-            if (totalFormulas <= 1) {
-                alert('Deve manter pelo menos uma fórmula na prescrição.');
-                return;
-            }
-            
-            if (!confirm('Tem certeza que deseja remover esta fórmula?')) {
-                return;
-            }
-            
-            const formulaData = {
-                id: formulaId,
-                html: formula.outerHTML,
-                scheduleData: formulaSchedule[formulaId] || null
-            };
-            
-            // Animar saída
-            formula.style.transition = 'all 0.3s ease';
-            formula.style.transform = 'translateX(-100%)';
-            formula.style.opacity = '0';
-            
-            setTimeout(() => {
-                formula.remove();
-                removeScheduleRow(formulaId);
-                
-                const action = {
-                    type: 'remove',
-                    formulaId: formulaId,
-                    formulaData: formulaData,
-                    timestamp: Date.now()
-                };
-                
-                actionHistory.push(action);
-                removedFormulas.push(formulaData);
-                checkEmptyPages();
-            }, 300);
-        }
-
-        function createFormulaHTML(number) {
-            return \`
-                <div class="formula-section" data-formula-id="\${number}">
-                    <button class="remove-formula-btn" onclick="removeFormula(\${number})" title="Remover esta fórmula">
-                        ✖
-                    </button>
-                    <div class="formula-header">
-                        <input type="text" value="\${number}️⃣ NOVA FÓRMULA" placeholder="Nome da fórmula">
-                    </div>
-                    <div class="formula-content">
-                        <div class="medication-item">
-                            <input type="text" class="medication-name" value="Manipular em comprimidos:" placeholder="Tipo de manipulação">
-                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Ativo principal .......................... 250mg
-• Ativo secundário ................... 100mg
-• Excipiente qsp ....................... 1 comprimido</textarea>
-                            <div class="medication-instructions">
-                                <input type="text" class="posology" value="Posologia: 1 dose por dia conforme orientação médica" placeholder="Posologia">
-                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
-                                <input type="text" class="notes" value="Tomar preferencialmente com refeições" placeholder="Observações">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            \`;
-        }
-
-        // ======= GERENCIAMENTO DE CRONOGRAMA =======
-        function updateSchedule() {
-            const scheduleTableBody = document.getElementById('scheduleTableBody');
-            scheduleTableBody.innerHTML = '';
-            
-            const sortedSchedule = Object.entries(formulaSchedule)
-                .filter(([id]) => document.querySelector(\`[data-formula-id="\${id}"]\`))
-                .sort((a, b) => {
-                    const timeA = parseInt(a[1].time.match(/\\d+/)[0]);
-                    const timeB = parseInt(b[1].time.match(/\\d+/)[0]);
-                    return timeA - timeB;
-                });
-            
-            sortedSchedule.forEach(([id, data]) => {
-                const rowHTML = \`
-                    <tr data-schedule-id="\${id}">
-                        <td><textarea>\${data.time}</textarea></td>
-                        <td><textarea>\${data.medication}</textarea></td>
-                        <td><textarea>\${data.observation}</textarea></td>
-                    </tr>
-                \`;
-                scheduleTableBody.insertAdjacentHTML('beforeend', rowHTML);
-            });
-            
-            addTextareaListeners();
-        }
-
-        function addScheduleRow(formulaNumber) {
-            const timeSlots = ['9h00', '10h00', '11h00', '14h00', '15h00', '16h00', '17h00', '18h00', '20h00', '22h00'];
-            const timeIndex = formulaNumber - 3;
-            
-            formulaSchedule[formulaNumber] = {
-                time: \`\${timeSlots[timeIndex] || (8 + timeIndex) + 'h00'}\\n(horário)\`,
-                medication: \`• 1 dose \${formulaNumber}ª Fórmula\`,
-                observation: 'Conforme orientação médica'
-            };
-            
-            updateSchedule();
-        }
-
-        function removeScheduleRow(formulaId) {
-            delete formulaSchedule[formulaId];
-            updateSchedule();
-        }
-
-        // ======= OUTRAS FUNÇÕES =======
-        function checkEmptyPages() {
-            const pages = document.querySelectorAll('.page');
-            
-            pages.forEach(page => {
-                const hasFormulas = page.querySelector('.formula-section');
-                const hasSchedule = page.querySelector('.schedule-table');
-                const hasSignature = page.querySelector('.signature-section-highlight');
-                const hasWarnings = page.querySelector('.warnings');
-                
-                if (!hasFormulas && !hasSchedule && !hasSignature && !hasWarnings) {
-                    page.classList.add('empty');
-                } else {
-                    page.classList.remove('empty');
-                }
-            });
-        }
-
-        function syncDoctorData() {
-            const doctorInputs = document.querySelectorAll('.doctor-name, .specialty, .credentials');
-            
-            doctorInputs.forEach((input) => {
-                input.addEventListener('input', function() {
-                    const className = this.className;
-                    const allSimilar = document.querySelectorAll('.' + className);
-                    
-                    allSimilar.forEach(similarInput => {
-                        if (similarInput !== this) {
-                            similarInput.value = this.value;
-                        }
-                    });
-                });
-            });
-        }
-
-        // ======= FUNÇÃO DE IMPRESSÃO SUPER OTIMIZADA =======
-        function generatePDF() {
-            console.log('Gerando PDF optimizado...');
-            
-            // Prepara para impressão
-            checkEmptyPages();
-            
-            // Ajusta todos os textareas para o conteúdo
-            const textareas = document.querySelectorAll('textarea');
-            textareas.forEach(textarea => {
-                autoResizeTextarea(textarea);
-                
-                // Força altura mínima para impressão
-                if (textarea.scrollHeight < 30) {
-                    textarea.style.height = '30px';
-                }
-            });
-            
-            // Esconde elementos não necessários
-            hidePWAInstallPrompt();
-            
-            // Feedback visual detalhado
-            const printBtn = document.querySelector('.print-btn');
-            const originalText = printBtn.innerHTML;
-            const originalBg = printBtn.style.background;
-            
-            printBtn.innerHTML = '⏳ Preparando PDF...';
-            printBtn.style.background = 'linear-gradient(135deg, #ffc107 0%, #ff8c00 100%)';
-            printBtn.disabled = true;
-            
-            // Força reflow para garantir que tudo está renderizado
-            document.body.offsetHeight;
-            
-            setTimeout(() => {
-                printBtn.innerHTML = '📄 Gerando PDF...';
-                
-                setTimeout(() => {
-                    window.print();
-                    
-                    // Restaura botão após impressão
-                    setTimeout(() => {
-                        printBtn.innerHTML = originalText;
-                        printBtn.style.background = originalBg;
-                        printBtn.disabled = false;
-                    }, 2000);
-                }, 500);
-            }, 300);
-        }
-
-        // ======= AUTO-SAVE OTIMIZADO =======
-        function saveState() {
-            const state = {
-                formulaCount: formulaCount,
-                actionHistory: actionHistory,
-                removedFormulas: removedFormulas,
-                formulaSchedule: formulaSchedule,
-                timestamp: Date.now(),
-                // Salva dados dos inputs
-                formData: {
-                    doctorName: document.querySelector('.doctor-name').value,
-                    specialty: document.querySelector('.specialty').value,
-                    credentials: document.querySelector('.credentials').value,
-                    patientName: document.querySelector('.field-value[placeholder="Nome completo"]').value,
-                    patientAge: document.querySelector('.field-value[placeholder="Idade"]').value,
-                    patientCPF: document.querySelector('.field-value[placeholder="CPF"]').value,
-                    consultDate: document.querySelector('.field-value[placeholder="Data da consulta"]').value
-                }
-            };
-            
-            try {
-                localStorage.setItem('prescriptionState', JSON.stringify(state));
-                console.log('Estado salvo automaticamente');
-            } catch (error) {
-                console.warn('Não foi possível salvar o estado:', error);
-            }
-        }
-
-        // Auto-save otimizado para mobile
-        let saveTimeout;
+        // Auto-resize de textareas
         document.addEventListener('input', function(e) {
-            if (e.target.matches('input, textarea')) {
-                clearTimeout(saveTimeout);
-                saveTimeout = setTimeout(saveState, 2000);
+            if (e.target.tagName === 'TEXTAREA') {
+                e.target.style.height = 'auto';
+                e.target.style.height = e.target.scrollHeight + 'px';
             }
         });
 
-        // ======= EVENT LISTENERS =======
-        window.addEventListener('beforeprint', function() {
-            console.log('Preparando para impressão otimizada...');
-            checkEmptyPages();
-            
-            // Força ajuste de todas as textareas
-            const textareas = document.querySelectorAll('textarea');
-            textareas.forEach(textarea => {
-                autoResizeTextarea(textarea);
-                
-                // Garante altura mínima para impressão
-                const currentHeight = parseInt(textarea.style.height);
-                if (currentHeight < 25) {
-                    textarea.style.height = '25px';
-                }
-            });
-            
-            hidePWAInstallPrompt();
-            
-            // Remove scroll das textareas para impressão
-            textareas.forEach(textarea => {
-                textarea.style.overflow = 'visible';
-                textarea.style.resize = 'none';
-            });
-        });
-
-        window.addEventListener('afterprint', function() {
-            console.log('Impressão finalizada');
-            
-            // Restaura comportamento normal das textareas
-            const textareas = document.querySelectorAll('textarea');
-            textareas.forEach(textarea => {
-                textarea.style.overflow = 'visible';
-                textarea.style.resize = 'vertical';
-            });
-        });
-
-        window.addEventListener('orientationchange', function() {
-            setTimeout(() => {
-                const viewport = document.querySelector('meta[name="viewport"]');
-                viewport.setAttribute('content', 
-                    'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
-                );
-                
-                // Reajusta textareas após rotação
-                addTextareaListeners();
-            }, 500);
-        });
-
-        window.addEventListener('beforeunload', function(e) {
-            saveState();
-        });
-
-        // Melhorar performance em dispositivos móveis
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            // Reduz frequência de auto-save em mobile
-            let saveTimeout;
-            const originalSaveState = saveState;
-            
-            saveState = function() {
-                clearTimeout(saveTimeout);
-                saveTimeout = setTimeout(originalSaveState, 3000);
-            };
-
-            // Otimiza scroll em mobile
-            document.addEventListener('touchstart', function() {}, { passive: true });
-            document.addEventListener('touchmove', function() {}, { passive: true });
+        // Detectar iOS para ajustes específicos
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            document.body.classList.add('ios-device');
         }
-
-        // ======= LOGS DE DEBUG =======
-        console.log('=== Prescrição Pech App ===');
-        console.log('Versão: 3.0.0 - Completamente Funcional');
-        console.log('PWA Suporte:', 'serviceWorker' in navigator);
-        console.log('Modo PWA:', isPWA());
-        console.log('User Agent:', navigator.userAgent);
-        console.log('Viewport:', window.innerWidth + 'x' + window.innerHeight);
-        console.log('Todas as funcionalidades ativas: ✅');
-        console.log('==============================');
     </script>
 </body>
 </html>
