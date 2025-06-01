@@ -3,22 +3,26 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+    <!-- Meta tags PWA e Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Prescrição Pech">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#2c5aa0">
-    
-    <title>Prescrição Pech</title>
+    <meta name="format-detection" content="telephone=no">
     
     <!-- Manifest PWA -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlByZXNjcmnDp8OjbyBQZWNoIiwKICAic2hvcnRfbmFtZSI6ICJQcmVzY3Jpw6fDo28iLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2ZmZmZmZiIsCiAgInRoZW1lX2NvbG9yIjogIiMyYzVhYTAiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBSUFBQUFDQUNBWUFBQUREUFc2MUFBQUFDWEJJV1hNQUFBc1RBQUFMRXdFQW1wd1lBQUFBQVhOU1IwSUFyczRjNlFBQUFBUm5RVTFCQUFDeGp3djhZUVVBQUFCU1NVUkJWSGdCN2RxeENVQXhFSVMvOE10dVFXUkplSVJFbDBBNEVBZ0VBZ0VJRUdERHdBQVE0QkRnQVljeE1JQUFBQUFTVVZPUNS1DWUlVLAogICAgICAic2l6ZXMiOiAiMTI4eDEyOCIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFRQUFBQUVBQ0FZQUFBQlI5czR1QUFBQUNYQklXWE1BQUFzVEFBQUxFd0VBbXB3WUFBQUFBWE5TUjBJQXJzNGM2UUFBQUFSblFVMUJBQUN4and2OFlRVUFBQUJqU1VSQlZIZ0I3ZHFCQ1VBeEVJUy84TXR1UVdSSmVJVUVsMEE0RUFnRUFnRUlFR0REd0FBUTRCRGdBWWN4TUlBQUFBQVNVVk9SazVDWUlJPSIsCiAgICAgICJzaXplcyI6ICIyNTZ4MjU2IiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfQogIF0KfQ==">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlByZXNjcmnDp8OjbyBQZWNoIiwKICAic2hvcnRfbmFtZSI6ICJQcmVzY3Jpw6fDo28iLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2Y4ZjlmYSIsCiAgInRoZW1lX2NvbG9yIjogIiMyYzVhYTAiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTEFBQUFDd0NBWUFBQURkU2tNaEFBQUFDWEJJV1hNQUFBc1RBQUFMRXdFQW1wd1lBQUFBQVhOU1IwSUFyczRjNlFBQUFBUm5RVTFCQUFDeGp3djhZUVVBQUFCYlNVUkJWSGdCN2R4QkVRSXhFQVYvQVRGWjJCRXNBb0JBSUJBSUJBSUJBSUJBSUJBSUJBSUJBSUJBSUJBSUJBSUJBSTFSRng0K1BEN0FBQUFBRWxGVGtTdVFtQ0MiLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0KICBdCn0=">
     
-    <!-- Ícone para iOS -->
-    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABSSURBVHgB7dqxCUAxEIS/8MtuQWRJeIREl0A4EAgEAgEIEGDDwAAQ4BDgAYcxMIAAAAAASUVORk5CYII=">
+    <!-- Ícone Apple Touch -->
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALAAAACwCAYAAACvt+ReAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABbSURBVHgB7dxBEQIxEAV/ATFz2BEsAoBBIBBIBBIBBIBBIBBIBBIBBAceBEFQ1REx4+PD7AAAAASUVORK5CYII=">
+    
+    <title>Prescrição Médica - Dr. Guili Pech</title>
     
     <style>
-        /* Reset e Base */
+        /* RESET E BASE */
         * {
             margin: 0;
             padding: 0;
@@ -26,18 +30,16 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            font-size: 16px;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Arial', sans-serif;
+            background: #f8f9fa;
+            padding: 10mm;
+            color: #333;
             margin: 0;
-            padding: 20px;
+            line-height: 1.4;
             min-height: 100vh;
+            position: relative;
+            padding-bottom: 60px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -46,203 +48,583 @@
         input, textarea, select {
             font-size: 16px !important;
             -webkit-appearance: none;
-            -moz-appearance: none;
             appearance: none;
         }
 
-        input[type="text"], textarea {
-            width: 100%;
-            border: 1px solid #ddd;
-            padding: 8px;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 60px;
-        }
-
-        /* Container Principal */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+        /* PÁGINA */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
             background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 60px;
             border-radius: 8px;
             overflow: hidden;
-            margin-bottom: 100px; /* Espaço para o rodapé fixo */
         }
 
-        /* Cabeçalho */
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        .page.empty {
+            display: none;
+        }
+
+        /* CABEÇALHO */
         .header {
-            background: linear-gradient(135deg, #2c5aa0 0%, #1e4080 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 15px 25px;
+            border-bottom: 3px solid #2c5aa0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            flex-shrink: 0;
         }
 
-        .header h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* Informações do Médico */
-        .doctor-info {
-            background: #f8f9fa;
-            padding: 20px;
-            border-bottom: 2px solid #2c5aa0;
-        }
-
-        .doctor-info input {
-            margin-bottom: 10px;
-        }
-
-        /* Informações do Paciente */
-        .patient-info {
-            padding: 20px;
-            background: #fff;
-            border-bottom: 1px solid #eee;
-        }
-
-        .patient-info h3 {
+        .doctor-logo {
+            font-size: 28px;
+            font-weight: bold;
             color: #2c5aa0;
-            margin-bottom: 15px;
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #2c5aa0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .patient-fields {
+        .doctor-info {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .doctor-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 3px;
+            border: none;
+            background: transparent;
+            width: 100%;
+        }
+
+        .doctor-name:focus {
+            outline: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .specialty {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 2px;
+            border: none;
+            background: transparent;
+            width: 100%;
+        }
+
+        .specialty:focus {
+            outline: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .credentials {
+            font-size: 13px;
+            color: #888;
+            border: none;
+            background: transparent;
+            width: 100%;
+        }
+
+        .credentials:focus {
+            outline: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .prescription-title {
+            background: #2c5aa0 !important;
+            color: white !important;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .prescription-title input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+        }
+
+        .prescription-title input:focus {
+            outline: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+
+        /* CONTEÚDO */
+        .content {
+            padding: 20px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 60px;
+        }
+
+        /* INFORMAÇÕES DO PACIENTE */
+        .patient-info {
+            background: #f8f9fa;
+            border-left: 4px solid #2c5aa0;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .patient-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
+            margin-bottom: 8px;
         }
 
-        /* Container de Fórmulas */
-        .formulas-container {
-            padding: 20px;
+        .patient-row:last-child {
+            margin-bottom: 0;
         }
 
-        .formula-item {
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .formula-header {
+        .patient-field {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
         }
 
-        .formula-number {
-            background: #2c5aa0;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
+        .field-label {
             font-weight: bold;
+            color: #2c5aa0;
+            margin-right: 8px;
+            min-width: 70px;
+            font-size: 13px;
         }
 
-        .remove-formula {
+        .field-value {
+            color: #555;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            padding: 2px 5px;
+            border-bottom: 1px dashed #ccc;
+            flex: 1;
+        }
+
+        .field-value:focus {
+            border-bottom-color: #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            outline: 1px solid #2c5aa0;
+            border-radius: 4px;
+        }
+
+        /* CONTAINER DE FÓRMULAS */
+        .formulas-container {
+            margin-top: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* SEÇÃO DE FÓRMULA */
+        .formula-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            overflow: visible;
+            position: relative;
+            flex: 0 0 auto;
+            min-height: auto;
+            transition: all 0.3s ease;
+        }
+
+        /* BOTÃO REMOVER FÓRMULA */
+        .remove-formula-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
             background: #dc3545;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 12px;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
         }
 
-        .remove-formula:hover {
+        .remove-formula-btn:hover {
             background: #c82333;
+            transform: scale(1.1);
+            opacity: 1;
         }
 
-        /* Botões */
-        .btn {
-            background: #2c5aa0;
+        /* CABEÇALHO DA FÓRMULA */
+        .formula-header {
+            background: #2c5aa0 !important;
+            color: white !important;
+            padding: 8px 40px 8px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .formula-header input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .formula-header input:focus {
+            outline: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+
+        /* CONTEÚDO DA FÓRMULA */
+        .formula-content {
+            padding: 12px;
+        }
+
+        .medication-item {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 10px;
+            border-left: 3px solid #28a745;
+        }
+
+        .medication-name {
+            font-weight: bold;
+            color: #2c5aa0;
+            font-size: 13px;
+            margin-bottom: 5px;
+            border: none;
+            background: transparent;
+            width: 100%;
+        }
+
+        .medication-name:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        .medication-composition {
+            font-size: 11px;
+            color: #666;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            min-height: 60px;
+            resize: vertical;
+            overflow: visible;
+        }
+
+        .medication-composition:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        .medication-instructions {
+            background: #e8f4f8 !important;
+            padding: 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #2c5aa0;
+        }
+
+        .posology {
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 3px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-size: 11px;
+        }
+
+        .posology:focus {
+            outline: 1px solid #dc3545;
+            background: rgba(220, 53, 69, 0.05);
+            border-radius: 4px;
+        }
+
+        .duration, .notes {
+            border: none;
+            background: transparent;
+            width: 100%;
+            margin-bottom: 2px;
+            font-size: 11px;
+        }
+
+        .duration:focus, .notes:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        /* BOTÃO ADICIONAR FÓRMULA */
+        .add-formula-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: background 0.3s;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(40, 167, 69, 0.2);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 250px;
         }
 
-        .btn:hover {
-            background: #1e4080;
+        .add-formula-btn:hover,
+        .add-formula-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
         }
 
-        .btn:active {
-            transform: scale(0.98);
+        /* CRONOGRAMA */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 12px;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        .btn-success {
-            background: #28a745;
-        }
-
-        .btn-success:hover {
-            background: #218838;
-        }
-
-        .btn-container {
-            padding: 20px;
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
             text-align: center;
         }
 
-        /* Assinatura */
-        .signature-section {
-            padding: 30px 20px;
-            text-align: center;
-            border-top: 1px solid #eee;
+        .schedule-table th {
+            background: #2c5aa0 !important;
+            color: white !important;
+            font-weight: bold;
         }
 
-        .signature-line {
+        .schedule-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .schedule-table textarea {
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: center;
+            resize: vertical;
+            font-size: 11px;
+            min-height: 30px;
+            overflow: visible;
+        }
+
+        .schedule-table textarea:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        /* ADVERTÊNCIAS */
+        .warnings {
+            background: #fff3cd !important;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            border: none;
+            background: transparent;
+            width: 100%;
+        }
+
+        .warning-title:focus {
+            outline: 1px solid #856404;
+            background: rgba(133, 100, 4, 0.05);
+            border-radius: 4px;
+        }
+
+        .warning-title::before {
+            content: "⚠️";
+            margin-right: 8px;
+        }
+
+        .warning-list {
+            font-size: 12px;
+            color: #856404;
+            line-height: 1.4;
+            border: none;
+            background: transparent;
+            width: 100%;
+            min-height: 80px;
+            resize: vertical;
+            overflow: visible;
+        }
+
+        .warning-list:focus {
+            outline: 1px solid #856404;
+            background: rgba(133, 100, 4, 0.05);
+            border-radius: 4px;
+        }
+
+        /* ASSINATURA */
+        .signature-section-highlight {
+            background: #f8f9fa;
+            border: 2px solid #2c5aa0;
+            border-radius: 8px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 200px;
+        }
+
+        .signature-line-highlight {
+            border-bottom: 2px solid #2c5aa0;
             width: 300px;
-            height: 1px;
-            background: #333;
-            margin: 40px auto 10px;
+            height: 60px;
+            margin: 25px auto 20px;
         }
 
-        /* Rodapé Fixo */
-        .footer-fixed {
+        .doctor-details-highlight {
+            margin-top: 15px;
+        }
+
+        .doctor-details-highlight input {
+            font-size: 14px;
+            color: #2c5aa0;
+            border: none;
+            background: transparent;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .doctor-details-highlight input:focus {
+            outline: 1px solid #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+            border-radius: 4px;
+        }
+
+        .signature-date {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #2c5aa0;
+            font-style: italic;
+        }
+
+        /* RODAPÉ FIXO */
+        .contact-footer {
+            background: #2c5aa0 !important;
+            color: white !important;
+            padding: 12px 30px;
+            text-align: center;
+            font-size: 11px;
+            line-height: 1.5;
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: #2c5aa0;
+            width: 100%;
+            z-index: 100;
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+        }
+
+        /* BOTÃO IMPRIMIR/PDF */
+        .print-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 14px;
-            z-index: 1000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            display: block;
+            width: auto;
+            min-width: 220px;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .print-btn::before {
+            content: "📄 ";
+            font-size: 18px;
+            margin-right: 5px;
         }
 
         /* PWA Install Banner */
         .pwa-banner {
             position: fixed;
-            bottom: 80px;
+            bottom: max(80px, calc(80px + env(safe-area-inset-bottom)));
             left: 20px;
             right: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #2c5aa0 0%, #667eea 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(44, 90, 160, 0.4);
             padding: 20px;
             display: none;
             z-index: 999;
+            animation: slideUp 0.4s ease-out;
         }
 
         .pwa-banner.show {
             display: block;
-            animation: slideUp 0.3s ease-out;
         }
 
         @keyframes slideUp {
@@ -258,266 +640,724 @@
 
         .pwa-banner h3 {
             margin: 0 0 10px;
-            color: #2c5aa0;
+            font-size: 18px;
+        }
+
+        .pwa-banner p {
+            margin: 0 0 15px;
+            font-size: 14px;
+            opacity: 0.9;
         }
 
         .pwa-banner-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
         }
 
-        /* Mobile Responsivo */
+        .pwa-btn {
+            flex: 1;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pwa-install {
+            background: white;
+            color: #2c5aa0;
+        }
+
+        .pwa-dismiss {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        /* ESTILOS DE IMPRESSÃO */
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            @page {
+                size: A4;
+                margin: 15mm 15mm 30mm 15mm;
+            }
+            
+            .page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                page-break-after: always;
+                min-height: 100vh;
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 30mm;
+                border-radius: 0 !important;
+            }
+
+            .page:last-child {
+                page-break-after: avoid;
+            }
+            
+            .page.empty {
+                display: none !important;
+            }
+            
+            .add-formula-btn, 
+            .print-btn,
+            .remove-formula-btn,
+            .pwa-banner {
+                display: none !important;
+            }
+            
+            .content {
+                padding: 15px 20px !important;
+                flex: 1;
+                margin-bottom: 0;
+            }
+            
+            .formula-section {
+                overflow: visible !important;
+                page-break-inside: avoid;
+                margin-bottom: 10px !important;
+            }
+            
+            .signature-section-highlight {
+                page-break-inside: avoid;
+            }
+            
+            .warnings {
+                page-break-inside: avoid;
+            }
+            
+            .schedule-table {
+                page-break-inside: avoid;
+            }
+            
+            textarea, input {
+                height: auto !important;
+                overflow: visible !important;
+            }
+            
+            /* Manter cores na impressão */
+            .header {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .prescription-title {
+                background: #2c5aa0 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .formula-header {
+                background: #2c5aa0 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .medication-instructions {
+                background: #e8f4f8 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .schedule-table th {
+                background: #2c5aa0 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .warnings {
+                background: #fff3cd !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            /* RODAPÉ FIXO NA IMPRESSÃO */
+            .contact-footer {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                background: #2c5aa0 !important;
+                color: white !important;
+                padding: 8px 15px !important;
+                font-size: 9px !important;
+                text-align: center !important;
+                z-index: 999999 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+                padding-bottom: max(80px, calc(80px + env(safe-area-inset-bottom)));
             }
-
-            .container {
-                border-radius: 0;
-                margin-bottom: 80px;
+            
+            .page {
+                width: 100%;
+                margin-bottom: 15px;
+                border-radius: 12px;
             }
-
-            .patient-fields {
+            
+            .patient-row {
                 grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .header h1 {
-                font-size: 20px;
+            .doctor-info {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .contact-footer {
+                font-size: 10px;
+                padding: 10px 15px;
+            }
+            
+            .signature-line-highlight {
+                width: 250px;
+            }
+            
+            .signature-section-highlight {
+                padding: 25px 15px;
             }
 
-            .signature-line {
-                width: 200px;
-            }
-
-            .footer-fixed {
-                font-size: 12px;
-                padding: 10px;
-            }
-        }
-
-        /* Estilos de Impressão */
-        @media print {
-            body {
-                padding: 0;
-                background: white;
-            }
-
-            .container {
-                box-shadow: none;
-                margin-bottom: 0;
-                max-width: 100%;
-            }
-
-            .btn, .pwa-banner, .remove-formula {
-                display: none !important;
-            }
-
-            .footer-fixed {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                page-break-after: avoid;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            /* Forçar rodapé na última página */
-            @page {
-                margin-bottom: 50px;
-            }
-
-            .formula-item {
-                page-break-inside: avoid;
-            }
-
-            .signature-section {
-                page-break-inside: avoid;
+            .pwa-banner {
+                left: 10px;
+                right: 10px;
             }
         }
 
-        /* Loading State */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #2c5aa0;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
         }
     </style>
 </head>
 <body>
-    <!-- Container Principal -->
-    <div class="container">
-        <!-- Cabeçalho -->
+    <!-- PÁGINA 1 - PRIMEIRA PRESCRIÇÃO -->
+    <div class="page" id="page1">
+        <!-- CABEÇALHO -->
         <div class="header">
-            <h1>PRESCRIÇÃO MÉDICA</h1>
-            <p>Receituário Digital Profissional</p>
-        </div>
-
-        <!-- Informações do Médico -->
-        <div class="doctor-info">
-            <input type="text" id="doctorName" placeholder="Nome do Médico" value="Dr. Guili Pech">
-            <input type="text" id="doctorSpecialty" placeholder="Especialidade" value="Cardiologia Clínica">
-            <input type="text" id="doctorCRM" placeholder="CRM" value="CRM 52.86323-8 | RQE: 25121">
-        </div>
-
-        <!-- Informações do Paciente -->
-        <div class="patient-info">
-            <h3>Dados do Paciente</h3>
-            <div class="patient-fields">
-                <input type="text" id="patientName" placeholder="Nome do Paciente">
-                <input type="text" id="patientAge" placeholder="Idade">
-                <input type="text" id="patientCPF" placeholder="CPF">
-                <input type="text" id="patientDate" placeholder="Data">
-            </div>
-        </div>
-
-        <!-- Container de Fórmulas -->
-        <div class="formulas-container" id="formulasContainer">
-            <!-- Fórmula Inicial -->
-            <div class="formula-item" data-formula-id="1">
-                <div class="formula-header">
-                    <span class="formula-number">Fórmula 1</span>
-                    <button class="remove-formula" onclick="removeFormula(1)">Remover</button>
+            <div class="header-content">
+                <div class="doctor-logo">GP</div>
+                <div class="doctor-info">
+                    <input type="text" class="doctor-name" value="Dr. Guili Pech" placeholder="Nome do Médico">
+                    <input type="text" class="specialty" value="Cardiologia Clínica" placeholder="Especialidade">
+                    <input type="text" class="credentials" value="CRM 52.86323-8 | RQE Cardiologia: 25121" placeholder="Credenciais">
                 </div>
-                <input type="text" placeholder="Nome da Fórmula" class="formula-name">
-                <textarea placeholder="Composição da fórmula"></textarea>
-                <input type="text" placeholder="Posologia">
-                <input type="text" placeholder="Duração do tratamento">
+            </div>
+            
+            <div class="prescription-title">
+                <input type="text" value="PRESCRIÇÃO MÉDICA - USO ORAL" placeholder="Título da Prescrição">
             </div>
         </div>
 
-        <!-- Botão Adicionar Fórmula -->
-        <div class="btn-container">
-            <button class="btn btn-success" onclick="addFormula()">+ Adicionar Fórmula</button>
-        </div>
+        <div class="content">
+            <!-- DADOS DO PACIENTE -->
+            <div class="patient-info">
+                <div class="patient-row">
+                    <div class="patient-field">
+                        <span class="field-label">Nome:</span>
+                        <input type="text" class="field-value" value="Maria Silva Santos" placeholder="Nome completo">
+                    </div>
+                    <div class="patient-field">
+                        <span class="field-label">Idade:</span>
+                        <input type="text" class="field-value" value="65 anos" placeholder="Idade">
+                    </div>
+                </div>
+                
+                <div class="patient-row">
+                    <div class="patient-field">
+                        <span class="field-label">CPF:</span>
+                        <input type="text" class="field-value" value="123.456.789-00" placeholder="CPF">
+                    </div>
+                    <div class="patient-field">
+                        <span class="field-label">Data:</span>
+                        <input type="text" class="field-value" value="" placeholder="Data da consulta">
+                    </div>
+                </div>
+            </div>
 
-        <!-- Seção de Assinatura -->
-        <div class="signature-section">
-            <div class="signature-line"></div>
-            <p id="doctorSignature">Dr. Guili Pech</p>
-            <p>CRM 52.86323-8</p>
-        </div>
+            <!-- CONTAINER DE FÓRMULAS -->
+            <div class="formulas-container">
+                <!-- FÓRMULA 1 -->
+                <div class="formula-section" data-formula-id="1">
+                    <button class="remove-formula-btn" onclick="removeFormula(1)" title="Remover esta fórmula">
+                        ❌
+                    </button>
+                    <div class="formula-header">
+                        <input type="text" value="1️⃣ FÓRMULA IMUNO-RESPIRATÓRIA" placeholder="Nome da fórmula">
+                    </div>
+                    <div class="formula-content">
+                        <div class="medication-item">
+                            <input type="text" class="medication-name" value="Manipular em comprimidos:" placeholder="Tipo de manipulação">
+                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Vitamina C ................................ 500mg
+• Zinco quelato ............................. 15mg
+• Vitamina D3 .............................. 2000UI
+• Própolis seco ............................. 200mg
+• Echinacea purpurea .................... 150mg
+• Excipiente qsp ........................... 1 comprimido</textarea>
+                            <div class="medication-instructions">
+                                <input type="text" class="posology" value="Posologia: 1 comprimido pela manhã" placeholder="Posologia">
+                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
+                                <input type="text" class="notes" value="Tomar com café da manhã" placeholder="Observações">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Botão Gerar PDF -->
-        <div class="btn-container">
-            <button class="btn" onclick="generatePDF()">
-                📄 Gerar PDF
+                <!-- FÓRMULA 2 -->
+                <div class="formula-section" data-formula-id="2">
+                    <button class="remove-formula-btn" onclick="removeFormula(2)" title="Remover esta fórmula">
+                        ❌
+                    </button>
+                    <div class="formula-header">
+                        <input type="text" value="2️⃣ FÓRMULA SONO E RELAXAMENTO" placeholder="Nome da fórmula">
+                    </div>
+                    <div class="formula-content">
+                        <div class="medication-item">
+                            <input type="text" class="medication-name" value="Manipular em sachês:" placeholder="Tipo de manipulação">
+                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Melatonina ................................ 3mg
+• Magnésio bisglicinato .................. 200mg
+• L-teanina .................................. 100mg
+• Camomila extrato seco ................. 150mg
+• Maracujá extrato seco .................. 100mg
+• Excipiente qsp ........................... 1 sachê</textarea>
+                            <div class="medication-instructions">
+                                <input type="text" class="posology" value="Posologia: 1 sachê por noite" placeholder="Posologia">
+                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
+                                <input type="text" class="notes" value="Dissolver em 200ml de água, 1-2h antes de dormir" placeholder="Observações">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="add-formula-btn" onclick="addFormula()">
+                ➕ Adicionar Nova Fórmula
+            </button>
+
+            <!-- CRONOGRAMA DE MEDICAÇÃO -->
+            <div style="margin-top: 20px;">
+                <h3 style="color: #2c5aa0; margin-bottom: 10px;">📅 CRONOGRAMA DE MEDICAÇÃO</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>HORÁRIO</th>
+                            <th>MEDICAMENTO</th>
+                            <th>OBSERVAÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTableBody">
+                        <tr data-schedule-id="1">
+                            <td><textarea>8h00
+(manhã)</textarea></td>
+                            <td><textarea>• 1 dose Fórmula Imuno-respiratória</textarea></td>
+                            <td><textarea>Com café da manhã</textarea></td>
+                        </tr>
+                        <tr data-schedule-id="2">
+                            <td><textarea>21h00
+(noite)</textarea></td>
+                            <td><textarea>• 1 sachê Fórmula Sono e Relaxamento</textarea></td>
+                            <td><textarea>1-2h antes de dormir, dissolver em 200ml água</textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ADVERTÊNCIAS -->
+            <div class="warnings">
+                <input type="text" class="warning-title" value="ADVERTÊNCIAS E CUIDADOS ESPECIAIS" placeholder="Título das advertências">
+                <textarea class="warning-list" placeholder="Digite as advertências">• Manter medicamentos em local seco e protegido da luz
+• Não exceder as doses recomendadas
+• Em caso de reações adversas, suspender uso e comunicar ao médico
+• Medicamentos manipulados devem ser armazenados conforme orientação da farmácia
+• Retorno em 30 dias para avaliação e ajustes se necessário
+• Manter alimentação equilibrada e hidratação adequada durante tratamento</textarea>
+            </div>
+
+            <!-- ASSINATURA -->
+            <div class="signature-section-highlight">
+                <div class="signature-line-highlight"></div>
+                <div class="doctor-details-highlight">
+                    <input type="text" value="Dr. Guili Pech" placeholder="Nome do médico">
+                    <input type="text" value="Cardiologia Clínica" placeholder="Especialidade">
+                    <input type="text" value="CRM 52.86323-8 | RQE: 25121" placeholder="Registro profissional">
+                </div>
+                <div class="signature-date">
+                    Rio de Janeiro, <span id="currentDate"></span>
+                </div>
+            </div>
+
+            <button class="print-btn" onclick="generatePDF()">
+                GERAR PDF
             </button>
         </div>
     </div>
 
-    <!-- Rodapé Fixo -->
-    <div class="footer-fixed">
-        📍 Condomínio Le Monde, Av. das Américas 3500, Bloco 4, Sala 210 | 📞 (21) 99341-8607
+    <!-- RODAPÉ -->
+    <div class="contact-footer">
+        <div>📍 Condomínio Le Monde, Av. das Américas 3500, bloco 4, portaria 2, sala 210 | 📞 (21) 99341-8607</div>
     </div>
 
     <!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwaBanner">
         <h3>📱 Instalar Aplicativo</h3>
-        <p>Adicione o Prescrição Pech à sua tela inicial para acesso rápido!</p>
+        <p>Adicione o Prescrição Pech à sua tela inicial!</p>
         <div class="pwa-banner-buttons">
-            <button class="btn" onclick="installPWA()">Instalar</button>
-            <button class="btn" style="background: #6c757d" onclick="dismissPWA()">Agora não</button>
+            <button class="pwa-btn pwa-install" onclick="installPWA()">Instalar</button>
+            <button class="pwa-btn pwa-dismiss" onclick="dismissPWA()">Agora não</button>
         </div>
     </div>
 
     <script>
-        // Variáveis globais
-        let formulaCount = 1;
+        // VARIÁVEIS GLOBAIS
+        let formulaCount = 2;
+        let actionHistory = [];
+        let removedFormulas = [];
         let deferredPrompt;
 
-        // Auto preencher data atual
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date();
-            const dateStr = today.toLocaleDateString('pt-BR');
-            document.getElementById('patientDate').value = dateStr;
+        // MAPEAMENTO DE FÓRMULAS PARA CRONOGRAMA
+        const formulaSchedule = {
+            1: { time: '8h00\n(manhã)', medication: '• 1 dose Fórmula Imuno-respiratória', observation: 'Com café da manhã' },
+            2: { time: '21h00\n(noite)', medication: '• 1 sachê Fórmula Sono e Relaxamento', observation: '1-2h antes de dormir, dissolver em 200ml água' }
+        };
 
-            // Sincronizar nome do médico com assinatura
-            document.getElementById('doctorName').addEventListener('input', function() {
-                document.getElementById('doctorSignature').textContent = this.value;
-            });
-
-            // Registrar Service Worker
-            registerServiceWorker();
-
-            // Verificar se deve mostrar banner PWA
-            checkPWAStatus();
-        });
-
-        // Função para adicionar fórmula
-        function addFormula() {
-            formulaCount++;
-            const container = document.getElementById('formulasContainer');
-            
-            const newFormula = document.createElement('div');
-            newFormula.className = 'formula-item';
-            newFormula.dataset.formulaId = formulaCount;
-            
-            newFormula.innerHTML = `
-                <div class="formula-header">
-                    <span class="formula-number">Fórmula ${formulaCount}</span>
-                    <button class="remove-formula" onclick="removeFormula(${formulaCount})">Remover</button>
-                </div>
-                <input type="text" placeholder="Nome da Fórmula" class="formula-name">
-                <textarea placeholder="Composição da fórmula"></textarea>
-                <input type="text" placeholder="Posologia">
-                <input type="text" placeholder="Duração do tratamento">
-            `;
-            
-            container.appendChild(newFormula);
-            
-            // Scroll suave até a nova fórmula
-            newFormula.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // FUNÇÃO PARA AUTO-AJUSTAR ALTURA DOS TEXTAREAS
+        function autoResizeTextarea(textarea) {
+            textarea.style.height = 'auto';
+            const minHeight = 30;
+            const newHeight = Math.max(minHeight, textarea.scrollHeight);
+            textarea.style.height = newHeight + 'px';
         }
 
-        // Função para remover fórmula
-        function removeFormula(id) {
-            if (confirm('Deseja remover esta fórmula?')) {
-                const formula = document.querySelector(`[data-formula-id="${id}"]`);
-                if (formula) {
-                    formula.style.opacity = '0';
-                    formula.style.transform = 'translateX(-100%)';
-                    setTimeout(() => formula.remove(), 300);
-                }
+        // FUNÇÃO PARA ADICIONAR LISTENERS AOS TEXTAREAS
+        function addTextareaListeners() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResizeTextarea(textarea);
+                
+                textarea.addEventListener('input', function() {
+                    autoResizeTextarea(this);
+                });
+                
+                textarea.addEventListener('focus', function() {
+                    autoResizeTextarea(this);
+                });
+                
+                textarea.addEventListener('paste', function() {
+                    setTimeout(() => autoResizeTextarea(this), 10);
+                });
+            });
+        }
+
+        // INICIALIZAÇÃO
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCurrentDate();
+            syncDoctorData();
+            updateSchedule();
+            checkEmptyPages();
+            addTextareaListeners();
+            
+            // Verificar ambiente e registrar service worker se possível
+            if (isSecureContext()) {
+                registerServiceWorker();
+            } else {
+                console.log('Aplicação rodando em modo básico (sem recursos PWA)');
+            }
+            
+            // Prevenir zoom duplo toque no iOS
+            preventDoubleTapZoom();
+        });
+        
+        // Verificar se está em contexto seguro
+        function isSecureContext() {
+            // Verifica se não está em iframe sandboxed
+            try {
+                const test = window.localStorage;
+                return window.self === window.top && 
+                       (window.location.protocol === 'https:' || 
+                        window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1');
+            } catch (e) {
+                return false;
             }
         }
 
-        // Função para gerar PDF (impressão)
+        // ATUALIZAR DATA ATUAL
+        function updateCurrentDate() {
+            const today = new Date();
+            const months = [
+                'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+                'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+            ];
+            
+            const day = today.getDate();
+            const month = months[today.getMonth()];
+            const year = today.getFullYear();
+            
+            document.getElementById('currentDate').textContent = `${day} de ${month} de ${year}`;
+            
+            // Atualizar campo de data do paciente
+            const dateField = document.querySelector('.field-value[placeholder="Data da consulta"]');
+            if (dateField && dateField.value === '') {
+                dateField.value = today.toLocaleDateString('pt-BR');
+            }
+        }
+
+        // FUNÇÃO PARA ADICIONAR NOVA FÓRMULA
+        function addFormula() {
+            formulaCount++;
+            
+            const action = {
+                type: 'add',
+                formulaId: formulaCount,
+                timestamp: Date.now()
+            };
+            
+            const newFormulaHTML = createFormulaHTML(formulaCount);
+            
+            const currentContainer = document.querySelector('.formulas-container');
+            currentContainer.insertAdjacentHTML('beforeend', newFormulaHTML);
+            
+            addScheduleRow(formulaCount);
+            actionHistory.push(action);
+            syncDoctorData();
+            checkEmptyPages();
+            addTextareaListeners();
+            
+            // Animar entrada
+            const newFormula = document.querySelector(`[data-formula-id="${formulaCount}"]`);
+            if (newFormula) {
+                newFormula.classList.add('animate-fade-in');
+                newFormula.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // FUNÇÃO PARA REMOVER FÓRMULA
+        function removeFormula(formulaId) {
+            const formula = document.querySelector(`[data-formula-id="${formulaId}"]`);
+            if (!formula) return;
+            
+            if (!confirm('Tem certeza que deseja remover esta fórmula?')) {
+                return;
+            }
+            
+            const formulaData = {
+                id: formulaId,
+                html: formula.outerHTML,
+                scheduleData: formulaSchedule[formulaId] || null
+            };
+            
+            formula.style.transition = 'all 0.3s ease';
+            formula.style.transform = 'translateX(-100%)';
+            formula.style.opacity = '0';
+            
+            setTimeout(() => {
+                formula.remove();
+                removeScheduleRow(formulaId);
+                
+                const action = {
+                    type: 'remove',
+                    formulaId: formulaId,
+                    formulaData: formulaData,
+                    timestamp: Date.now()
+                };
+                
+                actionHistory.push(action);
+                removedFormulas.push(formulaData);
+                checkEmptyPages();
+            }, 300);
+        }
+
+        // CRIAR HTML DE NOVA FÓRMULA
+        function createFormulaHTML(number) {
+            return `
+                <div class="formula-section" data-formula-id="${number}">
+                    <button class="remove-formula-btn" onclick="removeFormula(${number})" title="Remover esta fórmula">
+                        ❌
+                    </button>
+                    <div class="formula-header">
+                        <input type="text" value="${number}️⃣ NOVA FÓRMULA" placeholder="Nome da fórmula">
+                    </div>
+                    <div class="formula-content">
+                        <div class="medication-item">
+                            <input type="text" class="medication-name" value="Manipular em comprimidos:" placeholder="Tipo de manipulação">
+                            <textarea class="medication-composition" placeholder="Digite a composição da fórmula">• Ativo principal .......................... 250mg
+• Ativo secundário ................... 100mg
+• Excipiente qsp ....................... 1 comprimido</textarea>
+                            <div class="medication-instructions">
+                                <input type="text" class="posology" value="Posologia: 1 dose por dia conforme orientação médica" placeholder="Posologia">
+                                <input type="text" class="duration" value="Duração: Uso contínuo - Manipular para 1 mês" placeholder="Duração do tratamento">
+                                <input type="text" class="notes" value="Tomar preferencialmente com refeições" placeholder="Observações">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ATUALIZAR CRONOGRAMA
+        function updateSchedule() {
+            const scheduleTableBody = document.getElementById('scheduleTableBody');
+            scheduleTableBody.innerHTML = '';
+            
+            const sortedSchedule = Object.entries(formulaSchedule)
+                .filter(([id]) => document.querySelector(`[data-formula-id="${id}"]`))
+                .sort((a, b) => {
+                    const timeA = parseInt(a[1].time.match(/\d+/)[0]);
+                    const timeB = parseInt(b[1].time.match(/\d+/)[0]);
+                    return timeA - timeB;
+                });
+            
+            sortedSchedule.forEach(([id, data]) => {
+                const rowHTML = `
+                    <tr data-schedule-id="${id}">
+                        <td><textarea>${data.time}</textarea></td>
+                        <td><textarea>${data.medication}</textarea></td>
+                        <td><textarea>${data.observation}</textarea></td>
+                    </tr>
+                `;
+                scheduleTableBody.insertAdjacentHTML('beforeend', rowHTML);
+            });
+            
+            addTextareaListeners();
+        }
+
+        // ADICIONAR LINHA AO CRONOGRAMA
+        function addScheduleRow(formulaNumber) {
+            const timeSlots = ['9h00', '10h00', '11h00', '14h00', '15h00', '16h00', '17h00', '18h00', '20h00', '22h00'];
+            const timeIndex = formulaNumber - 3;
+            
+            formulaSchedule[formulaNumber] = {
+                time: `${timeSlots[timeIndex] || (8 + timeIndex) + 'h00'}\n(horário)`,
+                medication: `• 1 dose ${formulaNumber}ª Fórmula`,
+                observation: 'Conforme orientação médica'
+            };
+            
+            updateSchedule();
+        }
+
+        // REMOVER LINHA DO CRONOGRAMA
+        function removeScheduleRow(formulaId) {
+            delete formulaSchedule[formulaId];
+            updateSchedule();
+        }
+
+        // VERIFICAR PÁGINAS VAZIAS
+        function checkEmptyPages() {
+            const pages = document.querySelectorAll('.page');
+            
+            pages.forEach(page => {
+                const hasFormulas = page.querySelector('.formula-section');
+                const hasSchedule = page.querySelector('.schedule-table');
+                const hasSignature = page.querySelector('.signature-section-highlight');
+                const hasWarnings = page.querySelector('.warnings');
+                
+                if (!hasFormulas && !hasSchedule && !hasSignature && !hasWarnings) {
+                    page.classList.add('empty');
+                } else {
+                    page.classList.remove('empty');
+                }
+            });
+        }
+
+        // SINCRONIZAR DADOS DO MÉDICO
+        function syncDoctorData() {
+            const doctorInputs = document.querySelectorAll('.doctor-name, .specialty, .credentials');
+            
+            doctorInputs.forEach((input) => {
+                input.addEventListener('input', function() {
+                    const className = this.className;
+                    const allSimilar = document.querySelectorAll('.' + className);
+                    
+                    allSimilar.forEach(similarInput => {
+                        if (similarInput !== this) {
+                            similarInput.value = this.value;
+                        }
+                    });
+                });
+            });
+        }
+
+        // GERAR PDF (IMPRESSÃO)
         function generatePDF() {
             const btn = event.target;
             const originalText = btn.innerHTML;
             
-            // Mostrar loading
-            btn.innerHTML = '📄 Gerando PDF <span class="loading"></span>';
+            btn.innerHTML = '⏳ Gerando PDF...';
             btn.disabled = true;
             
-            // Pequeno delay para feedback visual
+            checkEmptyPages();
+            
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResizeTextarea(textarea);
+            });
+            
             setTimeout(() => {
                 window.print();
                 
-                // Restaurar botão
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }, 500);
         }
 
-        // Service Worker para PWA
+        // PWA SERVICE WORKER
         function registerServiceWorker() {
-            if ('serviceWorker' in navigator) {
-                // Criar service worker inline
+            // Verificar se pode usar Service Worker com segurança
+            try {
+                if (!('serviceWorker' in navigator)) {
+                    console.log('Service Worker não suportado neste navegador');
+                    return;
+                }
+                
+                // Verificar se está em contexto seguro
+                if (window.location.protocol !== 'https:' && 
+                    window.location.hostname !== 'localhost' && 
+                    window.location.hostname !== '127.0.0.1') {
+                    console.log('Service Worker requer HTTPS');
+                    return;
+                }
+                
+                // Verificar se não está em iframe sandboxed
+                if (window.self !== window.top) {
+                    console.log('Service Worker não disponível em iframe');
+                    return;
+                }
+                
                 const swContent = `
-                    const CACHE_NAME = 'prescricao-pech-v1';
+                    const CACHE_NAME = 'prescricao-pech-v2';
                     const urlsToCache = [
                         '/',
                         '/index.html'
@@ -542,31 +1382,45 @@
                 const swUrl = URL.createObjectURL(blob);
 
                 navigator.serviceWorker.register(swUrl)
-                    .then(reg => console.log('Service Worker registrado'))
-                    .catch(err => console.log('Service Worker falhou:', err));
+                    .then(reg => console.log('Service Worker registrado com sucesso'))
+                    .catch(err => console.warn('Service Worker não pôde ser registrado:', err.message));
+                    
+            } catch (error) {
+                console.warn('Erro ao verificar Service Worker:', error.message);
+                // Continua funcionando sem PWA
             }
         }
 
         // PWA Install Prompt
         window.addEventListener('beforeinstallprompt', (e) => {
+            // Verificar se está em contexto apropriado para PWA
+            if (window.self !== window.top || window.location.protocol !== 'https:') {
+                return; // Não mostrar prompt em iframe ou sem HTTPS
+            }
+            
             e.preventDefault();
             deferredPrompt = e;
             
-            // Mostrar banner após 3 segundos
             setTimeout(() => {
-                if (!localStorage.getItem('pwa-dismissed')) {
+                try {
+                    const isDismissed = typeof(Storage) !== "undefined" && 
+                                      window.localStorage && 
+                                      localStorage.getItem('pwa-dismissed');
+                    if (!isDismissed) {
+                        document.getElementById('pwaBanner').classList.add('show');
+                    }
+                } catch (error) {
+                    // Se localStorage não estiver disponível, mostra o banner
                     document.getElementById('pwaBanner').classList.add('show');
                 }
-            }, 3000);
+            }, 5000);
         });
 
         function installPWA() {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((result) => {
-                    if (result.outcome === 'accepted') {
-                        console.log('PWA instalado');
-                    }
+                    console.log('User choice:', result.outcome);
                     deferredPrompt = null;
                     document.getElementById('pwaBanner').classList.remove('show');
                 });
@@ -575,40 +1429,65 @@
 
         function dismissPWA() {
             document.getElementById('pwaBanner').classList.remove('show');
-            localStorage.setItem('pwa-dismissed', 'true');
-        }
-
-        function checkPWAStatus() {
-            // Verificar se está rodando como PWA
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                console.log('Rodando como PWA');
-                document.body.style.paddingTop = '20px';
+            try {
+                if (typeof(Storage) !== "undefined" && window.localStorage) {
+                    localStorage.setItem('pwa-dismissed', 'true');
+                }
+            } catch (error) {
+                console.warn('LocalStorage não disponível');
             }
         }
 
-        // Prevenir zoom em double tap no iOS
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function (event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
+        // Prevenir zoom duplo toque no iOS
+        function preventDoubleTapZoom() {
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        }
 
-        // Auto-resize de textareas
+        // AUTO-SAVE
+        let saveTimeout;
         document.addEventListener('input', function(e) {
-            if (e.target.tagName === 'TEXTAREA') {
-                e.target.style.height = 'auto';
-                e.target.style.height = e.target.scrollHeight + 'px';
+            if (e.target.matches('input, textarea')) {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(saveState, 2000);
             }
         });
 
-        // Detectar iOS para ajustes específicos
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-            document.body.classList.add('ios-device');
+        function saveState() {
+            const state = {
+                formulaCount: formulaCount,
+                actionHistory: actionHistory,
+                removedFormulas: removedFormulas,
+                formulaSchedule: formulaSchedule,
+                timestamp: Date.now()
+            };
+            
+            try {
+                // Verificar se localStorage está disponível
+                if (typeof(Storage) !== "undefined" && window.localStorage) {
+                    localStorage.setItem('prescriptionState', JSON.stringify(state));
+                    console.log('Estado salvo');
+                }
+            } catch (error) {
+                console.warn('LocalStorage não disponível:', error.message);
+                // Aplicação continua funcionando sem persistência
+            }
         }
+
+        // Ajustes antes da impressão
+        window.addEventListener('beforeprint', function() {
+            checkEmptyPages();
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResizeTextarea(textarea);
+            });
+        });
     </script>
 </body>
 </html>
